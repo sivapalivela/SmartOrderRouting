@@ -14,8 +14,7 @@ public class Exchange {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<OrderStock> buyOrderBook = new HashSet<>();
-
+    private Set<OrderStock> orderBook = new HashSet<>();
 
     @JsonManagedReference
     @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -28,11 +27,10 @@ public class Exchange {
     public Exchange() {
     }
 
-    public Exchange(String exchangeId, String exchangeName, Set<OrderStock> buyOrderBook, Set<OrderStock> sellOrderBook, Set<TransactionBook> transactionBook, double feeLadder, double todayTransactionValue) {
+    public Exchange(String exchangeId, String exchangeName, Set<OrderStock> orderBook, Set<TransactionBook> transactionBook, double feeLadder, double todayTransactionValue) {
         this.exchangeId = exchangeId;
         this.exchangeName = exchangeName;
-        this.buyOrderBook = buyOrderBook;
-//        this.sellOrderBook = sellOrderBook;
+        this.orderBook = orderBook;
         this.transactionBook = transactionBook;
         this.feeLadder = feeLadder;
         this.todayTransactionValue = todayTransactionValue;
@@ -53,22 +51,6 @@ public class Exchange {
     public void setExchangeName(String exchangeName) {
         this.exchangeName = exchangeName;
     }
-
-    public Set<OrderStock> getBuyOrderBook() {
-        return buyOrderBook;
-    }
-
-    public void setBuyOrderBook(Set<OrderStock> buyOrderBook) {
-        this.buyOrderBook = buyOrderBook;
-    }
-
-//    public Set<OrderStock> getSellOrderBook() {
-//        return sellOrderBook;
-//    }
-//
-//    public void setSellOrderBook(Set<OrderStock> sellOrderBook) {
-//        this.sellOrderBook = sellOrderBook;
-//    }
 
     public double getFeeLadder() {
         return feeLadder;
@@ -94,13 +76,20 @@ public class Exchange {
         this.transactionBook = transactionBook;
     }
 
+    public Set<OrderStock> getOrderBook() {
+        return orderBook;
+    }
+
+    public void setOrderBook(Set<OrderStock> orderBook) {
+        this.orderBook = orderBook;
+    }
+
     @Override
     public String toString() {
         return "Exchange{" +
                 "exchangeId='" + exchangeId + '\'' +
                 ", exchangeName='" + exchangeName + '\'' +
-                ", buyOrderBook=" + buyOrderBook +
-//                ", sellOrderBook=" + sellOrderBook +
+                ", orderBook=" + orderBook +
                 ", transactionBook=" + transactionBook +
                 ", feeLadder=" + feeLadder +
                 ", todayTransactionValue=" + todayTransactionValue +

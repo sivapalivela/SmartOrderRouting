@@ -14,11 +14,10 @@ public class TransactionBook {
     private int sellerOrderId;
     private int numberOfShares;
     private double transactionAmount;
-    private Date timeStamp = new Date();
+    private Date timeStamp;
     private String typeOfTransaction;
     private String buyerSideExchange;
     private String sellerSideExchange;
-    //TODO Dark Pool Variables
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "transactionId", nullable = false)

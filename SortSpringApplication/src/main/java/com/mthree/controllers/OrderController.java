@@ -3,10 +3,8 @@ package com.mthree.controllers;
 import com.mthree.models.OrderStock;
 import com.mthree.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -16,9 +14,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/createOrder")
-    public String CreateOrder(@RequestBody OrderStock o){
-        return orderService.createOrder(o);
+    @PostMapping("/createOrder/{companyId}")
+    public String CreateOrder(@RequestBody OrderStock o, @PathVariable String companyId){
+        return orderService.createOrder(o,companyId);
     }
 
 

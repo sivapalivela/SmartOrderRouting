@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,11 +17,9 @@ public class OrderStock {
     private String orderExchangeId;
     private String typeOfOrder;
 
-    @JsonManagedReference
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "orderStock", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "com_id", referencedColumnName = "companyId")
     private TradingCompanies company;
-
 
     private double price;
     private Date timeStamp = new Date();
@@ -30,15 +29,29 @@ public class OrderStock {
     @JoinColumn(name = "exchangeId", nullable = false)
     private Exchange exchange;
 
+    private String orderStatus;
+
     public OrderStock() {
     }
 
-    public OrderStock(int numberOfShares, String orderExchangeId, String typeOfOrder, double price,Date timeStamp) {
+    public OrderStock(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, TradingCompanies company, double price, Date timeStamp, Exchange exchange, String orderStatus) {
+        this.orderId = orderId;
         this.numberOfShares = numberOfShares;
         this.orderExchangeId = orderExchangeId;
         this.typeOfOrder = typeOfOrder;
+        this.company = company;
         this.price = price;
         this.timeStamp = timeStamp;
+        this.exchange = exchange;
+        this.orderStatus = orderStatus;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public int getOrderId() {
@@ -55,14 +68,6 @@ public class OrderStock {
 
     public void setNumberOfShares(int numberOfShares) {
         this.numberOfShares = numberOfShares;
-    }
-
-    public String getorderExchangeId() {
-        return orderExchangeId;
-    }
-
-    public void setorderExchangeId(String orderExchangeId) {
-        this.orderExchangeId = orderExchangeId;
     }
 
     public String getTypeOfOrder() {
@@ -97,6 +102,22 @@ public class OrderStock {
         this.exchange = exchange;
     }
 
+    public String getOrderExchangeId() {
+        return orderExchangeId;
+    }
+
+    public void setOrderExchangeId(String orderExchangeId) {
+        this.orderExchangeId = orderExchangeId;
+    }
+
+    public TradingCompanies getCompany() {
+        return company;
+    }
+
+    public void setCompany(TradingCompanies company) {
+        this.company = company;
+    }
+
     @Override
     public String toString() {
         return "OrderStock{" +
@@ -104,9 +125,11 @@ public class OrderStock {
                 ", numberOfShares=" + numberOfShares +
                 ", orderExchangeId='" + orderExchangeId + '\'' +
                 ", typeOfOrder='" + typeOfOrder + '\'' +
+                ", company=" + company +
                 ", price=" + price +
                 ", timeStamp=" + timeStamp +
                 ", exchange=" + exchange +
+                ", orderStatus='" + orderStatus + '\'' +
                 '}';
     }
 }

@@ -10,17 +10,18 @@ public class TradingCompanies {
     @Id
     private String companyId;
     private String companyName;
+    private String marketCap;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    private Set<OrderStock> orderStock;
+    @OneToOne(mappedBy = "company")
+    private OrderStock exchange;
 
     public TradingCompanies() {
     }
 
-    public TradingCompanies(String companyId, String companyName) {
+    public TradingCompanies(String companyId, String companyName, String marketCap) {
         this.companyId = companyId;
         this.companyName = companyName;
+        this.marketCap = marketCap;
     }
 
     public String getCompanyId() {
@@ -39,11 +40,20 @@ public class TradingCompanies {
         this.companyName = companyName;
     }
 
+    public String getMarketCap() {
+        return marketCap;
+    }
+
+    public void setMarketCap(String marketCap) {
+        this.marketCap = marketCap;
+    }
+
     @Override
     public String toString() {
         return "TradingCompanies{" +
                 "companyId='" + companyId + '\'' +
                 ", companyName='" + companyName + '\'' +
+                ", marketCap='" + marketCap + '\'' +
                 '}';
     }
 }
