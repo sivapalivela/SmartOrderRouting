@@ -10,9 +10,9 @@ public class Sort {
     @Id
     private int id;
 //    TODO: Discuss sort orderBooks
-    @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany()
     private Set<OrderStock> orderBook;
-    @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany()
     private Map<String,OrderStock> transactions;
 
     public Sort() {

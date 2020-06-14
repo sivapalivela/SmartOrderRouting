@@ -18,24 +18,18 @@ public class OrderService {
     @Autowired
     private ExchangeRepository exchangeRepo;
 
-    public OrderStock createOrder(OrderStock o){
-        Optional<Exchange> ex = exchangeRepo.findById(o.getorderExchangeId());
-        if(ex.isPresent()){
-            Exchange exObject = ex.get();
+    public String createOrder(OrderStock o){
+        Optional<Exchange> exchangeObject = exchangeRepo.findById(o.getorderExchangeId());
+        String message = "Failed to add !!!";
+        if(exchangeObject.isPresent()){
+            Exchange exObject = exchangeObject.get();
             o.setExchange(exObject);
             orderRepo.save(o);
-            if(o.getTypeOfOrder().equals("BuyOrder")){
-                exObject.getBuyOrderBook().add(o);
-                System.out.println(exObject.getBuyOrderBook().size());
-            }
-            else {
-                exObject.getSellOrderBook().add(o);
-                System.out.println(exObject.getSellOrderBook().size());
-            }
+            exObject.getBuyOrderBook().add(o);
             exchangeRepo.save(exObject);
-            return o;
+            message = "Successfully added !!!";
         }
-        return null;
+        return message;
     }
 
     public void cancelOrder(OrderStock o){

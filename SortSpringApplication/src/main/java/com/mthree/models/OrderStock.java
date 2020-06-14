@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class OrderStock {
@@ -14,8 +15,16 @@ public class OrderStock {
     private int numberOfShares;
     private String orderExchangeId;
     private String typeOfOrder;
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "orderStock", nullable = false)
+    private TradingCompanies company;
+
+
     private double price;
     private Date timeStamp = new Date();
+
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "exchangeId", nullable = false)

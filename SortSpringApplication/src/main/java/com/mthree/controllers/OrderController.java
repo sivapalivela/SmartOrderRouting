@@ -17,7 +17,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/createOrder")
-    public OrderStock CreateOrder(@RequestBody OrderStock o){
+    public String CreateOrder(@RequestBody OrderStock o){
         return orderService.createOrder(o);
     }
 
