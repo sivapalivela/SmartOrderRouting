@@ -17,7 +17,7 @@ public class OrderStock {
     private String orderExchangeId;
     private String typeOfOrder;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "com_id", referencedColumnName = "companyId")
     private TradingCompanies company;
 
@@ -46,14 +46,6 @@ public class OrderStock {
         this.orderStatus = orderStatus;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
     public int getOrderId() {
         return orderId;
     }
@@ -70,12 +62,28 @@ public class OrderStock {
         this.numberOfShares = numberOfShares;
     }
 
+    public String getOrderExchangeId() {
+        return orderExchangeId;
+    }
+
+    public void setOrderExchangeId(String orderExchangeId) {
+        this.orderExchangeId = orderExchangeId;
+    }
+
     public String getTypeOfOrder() {
         return typeOfOrder;
     }
 
     public void setTypeOfOrder(String typeOfOrder) {
         this.typeOfOrder = typeOfOrder;
+    }
+
+    public TradingCompanies getCompany() {
+        return company;
+    }
+
+    public void setCompany(TradingCompanies company) {
+        this.company = company;
     }
 
     public double getPrice() {
@@ -102,20 +110,12 @@ public class OrderStock {
         this.exchange = exchange;
     }
 
-    public String getOrderExchangeId() {
-        return orderExchangeId;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderExchangeId(String orderExchangeId) {
-        this.orderExchangeId = orderExchangeId;
-    }
-
-    public TradingCompanies getCompany() {
-        return company;
-    }
-
-    public void setCompany(TradingCompanies company) {
-        this.company = company;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     @Override

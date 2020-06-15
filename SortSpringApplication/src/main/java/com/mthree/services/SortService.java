@@ -1,5 +1,6 @@
 package com.mthree.services;
 
+import com.mthree.controllers.OrderController;
 import com.mthree.models.Exchange;
 import com.mthree.models.OrderStock;
 import com.mthree.models.TransactionBook;
@@ -7,6 +8,8 @@ import com.mthree.repositories.ExchangeRepository;
 import com.mthree.repositories.OrderRepository;
 import com.mthree.repositories.SortRepository;
 import com.mthree.repositories.TransactionRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -22,6 +25,8 @@ public class SortService {
 
     @Autowired
     private TransactionRepository transactionRepo;
+
+    Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     public Set<OrderStock> processTrade(int id, int range) {
         Optional<OrderStock> o = orderRepo.findById(id);
@@ -83,12 +88,15 @@ public class SortService {
                 tb.setExchange(buyExchange.get());
             }
             else{
+                logger.info("Transaction creation failed !!!");
                 return "Transaction creation failed !!!";
             }
             transactionRepo.save(tb);
+            logger.info("Transaction Successful !!!" + "The transaction id id"+ transId);
             return "Transaction Successful !!!";
 
         }
+        logger.info("Couldn't find Seller !!!");
         return "Couldn't find Seller !!!";
     }
 

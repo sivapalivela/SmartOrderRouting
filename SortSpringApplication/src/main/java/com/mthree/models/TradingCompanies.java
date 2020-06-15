@@ -1,6 +1,7 @@
 package com.mthree.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,16 +13,17 @@ public class TradingCompanies {
     private String companyName;
     private String marketCap;
 
-    @OneToOne(mappedBy = "company")
-    private OrderStock exchange;
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<OrderStock> orderStock;
 
     public TradingCompanies() {
     }
 
-    public TradingCompanies(String companyId, String companyName, String marketCap) {
+    public TradingCompanies(String companyId, String companyName, String marketCap, Set<OrderStock> orderStock) {
         this.companyId = companyId;
         this.companyName = companyName;
         this.marketCap = marketCap;
+        this.orderStock = orderStock;
     }
 
     public String getCompanyId() {
@@ -48,12 +50,21 @@ public class TradingCompanies {
         this.marketCap = marketCap;
     }
 
+    public Set<OrderStock> getOrderStock() {
+        return orderStock;
+    }
+
+    public void setOrderStock(Set<OrderStock> orderStock) {
+        this.orderStock = orderStock;
+    }
+
     @Override
     public String toString() {
         return "TradingCompanies{" +
                 "companyId='" + companyId + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", marketCap='" + marketCap + '\'' +
+                ", orderStock=" + orderStock +
                 '}';
     }
 }
