@@ -31,6 +31,12 @@ public class OrderStock {
 
     private String orderStatus;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "consumerid", nullable = false, referencedColumnName = "consumersId")
+    private Consumers consumers;
+
+
+
     public OrderStock() {
     }
 
@@ -44,6 +50,7 @@ public class OrderStock {
         this.timeStamp = timeStamp;
         this.exchange = exchange;
         this.orderStatus = orderStatus;
+//        this.user = user;
     }
 
     public int getOrderId() {
@@ -118,6 +125,14 @@ public class OrderStock {
         this.orderStatus = orderStatus;
     }
 
+    public Consumers getConsumers() {
+        return consumers;
+    }
+
+    public void setConsumers(Consumers consumers) {
+        this.consumers = consumers;
+    }
+
     @Override
     public String toString() {
         return "OrderStock{" +
@@ -130,6 +145,7 @@ public class OrderStock {
                 ", timeStamp=" + timeStamp +
                 ", exchange=" + exchange +
                 ", orderStatus='" + orderStatus + '\'' +
+//                ", user=" + user +
                 '}';
     }
 }

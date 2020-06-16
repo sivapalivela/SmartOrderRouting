@@ -16,7 +16,6 @@ public class Exchange {
     @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<OrderStock> orderBook = new HashSet<>();
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<TransactionBook> transactionBook = new HashSet<>();
 
@@ -24,16 +23,24 @@ public class Exchange {
 
     private double todayTransactionValue;
 
+    @OneToMany(mappedBy = "exchangeOfConsumers", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Consumers> usersOfExchange = new HashSet<>();
+
+    @OneToMany(mappedBy = "exchange",fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+    private Set<Trader> tradersOfExchange = new HashSet<>();
+
+
     public Exchange() {
     }
 
-    public Exchange(String exchangeId, String exchangeName, Set<OrderStock> orderBook, Set<TransactionBook> transactionBook, double feeLadder, double todayTransactionValue) {
+    public Exchange(String exchangeId, String exchangeName, Set<OrderStock> orderBook, Set<TransactionBook> transactionBook, double feeLadder, double todayTransactionValue, Set<Consumers> usersOfExchange) {
         this.exchangeId = exchangeId;
         this.exchangeName = exchangeName;
         this.orderBook = orderBook;
         this.transactionBook = transactionBook;
         this.feeLadder = feeLadder;
         this.todayTransactionValue = todayTransactionValue;
+        this.usersOfExchange = usersOfExchange;
     }
 
     public String getExchangeId() {
@@ -52,6 +59,22 @@ public class Exchange {
         this.exchangeName = exchangeName;
     }
 
+    public Set<OrderStock> getOrderBook() {
+        return orderBook;
+    }
+
+    public void setOrderBook(Set<OrderStock> orderBook) {
+        this.orderBook = orderBook;
+    }
+
+    public Set<TransactionBook> getTransactionBook() {
+        return transactionBook;
+    }
+
+    public void setTransactionBook(Set<TransactionBook> transactionBook) {
+        this.transactionBook = transactionBook;
+    }
+
     public double getFeeLadder() {
         return feeLadder;
     }
@@ -68,20 +91,12 @@ public class Exchange {
         this.todayTransactionValue = todayTransactionValue;
     }
 
-    public Set<TransactionBook> getTransactionBook() {
-        return transactionBook;
+    public Set<Consumers> getUsersOfExchange() {
+        return usersOfExchange;
     }
 
-    public void setTransactionBook(Set<TransactionBook> transactionBook) {
-        this.transactionBook = transactionBook;
-    }
-
-    public Set<OrderStock> getOrderBook() {
-        return orderBook;
-    }
-
-    public void setOrderBook(Set<OrderStock> orderBook) {
-        this.orderBook = orderBook;
+    public void setUsersOfExchange(Set<Consumers> usersOfExchange) {
+        this.usersOfExchange = usersOfExchange;
     }
 
     @Override
@@ -93,6 +108,7 @@ public class Exchange {
                 ", transactionBook=" + transactionBook +
                 ", feeLadder=" + feeLadder +
                 ", todayTransactionValue=" + todayTransactionValue +
+                ", usersOfExchange=" + usersOfExchange +
                 '}';
     }
 }

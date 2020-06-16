@@ -18,15 +18,21 @@ public class TransactionBook {
     private String typeOfTransaction;
     private String buyerSideExchange;
     private String sellerSideExchange;
-    @JsonBackReference
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "transactionId", nullable = false)
+    @JoinColumn(name = "transactionsId", nullable = false)
     private Exchange exchange;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "transactionsOfUser", nullable = false)
+    private Consumers consumers;
+
+
 
     public TransactionBook() {
     }
 
-    public TransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, Date timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, Exchange exchange) {
+    public TransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, Date timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, Exchange exchange, Consumers consumers) {
         this.transId = transId;
         this.buyerOrderId = buyerOrderId;
         this.sellerOrderId = sellerOrderId;
@@ -37,6 +43,7 @@ public class TransactionBook {
         this.buyerSideExchange = buyerSideExchange;
         this.sellerSideExchange = sellerSideExchange;
         this.exchange = exchange;
+        this.consumers = consumers;
     }
 
     public String getTransId() {
@@ -79,6 +86,14 @@ public class TransactionBook {
         this.transactionAmount = transactionAmount;
     }
 
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
     public String getTypeOfTransaction() {
         return typeOfTransaction;
     }
@@ -103,20 +118,20 @@ public class TransactionBook {
         this.sellerSideExchange = sellerSideExchange;
     }
 
-    public Date getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
     public Exchange getExchange() {
         return exchange;
     }
 
     public void setExchange(Exchange exchange) {
         this.exchange = exchange;
+    }
+
+    public Consumers getConsumers() {
+        return consumers;
+    }
+
+    public void setConsumers(Consumers consumers) {
+        this.consumers = consumers;
     }
 
     @Override
@@ -132,6 +147,7 @@ public class TransactionBook {
                 ", buyerSideExchange='" + buyerSideExchange + '\'' +
                 ", sellerSideExchange='" + sellerSideExchange + '\'' +
                 ", exchange=" + exchange +
+                ", consumers=" + consumers +
                 '}';
     }
 }

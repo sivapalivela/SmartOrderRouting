@@ -1,9 +1,12 @@
 package com.mthree.services;
 
 import com.mthree.controllers.OrderController;
+import com.mthree.models.Consumers;
 import com.mthree.models.Exchange;
 import com.mthree.models.OrderStock;
 import com.mthree.models.TradingCompanies;
+
+import com.mthree.repositories.ConsumersRepository;
 import com.mthree.repositories.ExchangeRepository;
 import com.mthree.repositories.OrderRepository;
 import com.mthree.repositories.TradingCompaniesRepository;
@@ -25,17 +28,23 @@ public class OrderService {
     @Autowired
     private TradingCompaniesRepository tradeComRepo;
 
+    @Autowired
+    private ConsumersRepository consumerRepo;
+
     Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-    public String createOrder(OrderStock o, String companyId){
+    public String createOrder(OrderStock o, String companyId, String username){
         Optional<Exchange> exchangeObject = exchangeRepo.findById(o.getOrderExchangeId());
         Optional<TradingCompanies> companyObject = tradeComRepo.findById(companyId);
+        Optional<Consumers> userObject = consumerRepo.findById(username);
         String message = "Failed to add stock !!!";
-        if(exchangeObject.isPresent() && companyObject.isPresent()){
+        if(exchangeObject.isPresent() && companyObject.isPresent() && userObject.isPresent()){
             TradingCompanies tcObject = companyObject.get();
             Exchange exObject = exchangeObject.get();
+            Consumers usrObject = userObject.get();
             o.setExchange(exObject);
             o.setCompany(tcObject);
+            o.setConsumers(usrObject);
             orderRepo.save(o);
             exObject.getOrderBook().add(o);
             exchangeRepo.save(exObject);

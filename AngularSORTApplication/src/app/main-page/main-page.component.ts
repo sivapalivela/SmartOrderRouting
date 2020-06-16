@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
+  consumerSwitchPoint = false;
+  traderSwitchPoint = false;
+
+
   constructor() { }
 
   ngOnInit(): void {
