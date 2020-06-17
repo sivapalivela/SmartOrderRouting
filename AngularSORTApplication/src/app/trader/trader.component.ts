@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trader',
@@ -7,9 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TraderComponent implements OnInit {
 
-  constructor() { }
+  Orders = [];
+
+  constructor(private http: HttpClient, private router : Router) { }
 
   ngOnInit(): void {
+    this.displayOrders();
+  }
+
+  displayOrders(){
+    this.http.get('http://localhost:8080/orders/getorders').subscribe(result => {
+      for(let i=1;i<=result[0];i++){
+        let temp = result[i].split("-");
+        this.Orders.push(temp);
+        console.log(temp);
+      }
+    });
+  }
+
+  accept(id,range){
+    this.http.post('http://localhost:8080/sort/processtrade/' + id + "/" + range, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType: 'text' }).subscribe(
+      result => {
+        console.log(result);
+        alert(result);
+        this.router.navigate(['']);
+      }
+    );
+  }
+
+  reject(id){
+    this.http.post('http://localhost:8080/orders/deleteOrder/' + id, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType: 'text' }).subscribe(
+      result => {
+        console.log(result);
+        alert(result);
+        this.router.navigate(['']);
+      }
+    );
   }
 
 }

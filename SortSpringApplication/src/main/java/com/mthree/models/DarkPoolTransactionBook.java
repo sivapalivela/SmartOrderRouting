@@ -1,13 +1,10 @@
 package com.mthree.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class TransactionBook {
-
+public class DarkPoolTransactionBook {
     @Id
     private String transId;
     private int buyerOrderId;
@@ -18,25 +15,16 @@ public class TransactionBook {
     private String typeOfTransaction;
     private String buyerSideExchange;
     private String sellerSideExchange;
-
+    private String consumer;
+    private String trading_company;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "transactionsId", nullable = false)
-    private Exchange exchange;
+    @JoinColumn(name = "darkPoolTransactions", nullable = false)
+    private Sort sort;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "transactionsOfUser", nullable = false)
-    private Consumers consumers;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "transaction_company",nullable = false)
-    private TradingCompanies company_name;
-
-
-
-    public TransactionBook() {
+    public DarkPoolTransactionBook() {
     }
 
-    public TransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, Date timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, Exchange exchange, Consumers consumers) {
+    public DarkPoolTransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, Date timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, String consumer, String trading_company, Sort sort) {
         this.transId = transId;
         this.buyerOrderId = buyerOrderId;
         this.sellerOrderId = sellerOrderId;
@@ -46,16 +34,9 @@ public class TransactionBook {
         this.typeOfTransaction = typeOfTransaction;
         this.buyerSideExchange = buyerSideExchange;
         this.sellerSideExchange = sellerSideExchange;
-        this.exchange = exchange;
-        this.consumers = consumers;
-    }
-
-    public TradingCompanies getCompany_name() {
-        return company_name;
-    }
-
-    public void setCompany_name(TradingCompanies company_name) {
-        this.company_name = company_name;
+        this.consumer = consumer;
+        this.trading_company = trading_company;
+        this.sort = sort;
     }
 
     public String getTransId() {
@@ -130,25 +111,33 @@ public class TransactionBook {
         this.sellerSideExchange = sellerSideExchange;
     }
 
-    public Exchange getExchange() {
-        return exchange;
+    public String getConsumer() {
+        return consumer;
     }
 
-    public void setExchange(Exchange exchange) {
-        this.exchange = exchange;
+    public void setConsumer(String consumer) {
+        this.consumer = consumer;
     }
 
-    public Consumers getConsumers() {
-        return consumers;
+    public String getTrading_company() {
+        return trading_company;
     }
 
-    public void setConsumers(Consumers consumers) {
-        this.consumers = consumers;
+    public void setTrading_company(String trading_company) {
+        this.trading_company = trading_company;
+    }
+
+    public Sort getSort() {
+        return sort;
+    }
+
+    public void setSort(Sort sort) {
+        this.sort = sort;
     }
 
     @Override
     public String toString() {
-        return "TransactionBook{" +
+        return "DarkPoolTransactionBook{" +
                 "transId='" + transId + '\'' +
                 ", buyerOrderId=" + buyerOrderId +
                 ", sellerOrderId=" + sellerOrderId +
@@ -158,8 +147,9 @@ public class TransactionBook {
                 ", typeOfTransaction='" + typeOfTransaction + '\'' +
                 ", buyerSideExchange='" + buyerSideExchange + '\'' +
                 ", sellerSideExchange='" + sellerSideExchange + '\'' +
-                ", exchange=" + exchange +
-                ", consumers=" + consumers +
+                ", consumer='" + consumer + '\'' +
+                ", trading_company='" + trading_company + '\'' +
+                ", sort=" + sort +
                 '}';
     }
 }

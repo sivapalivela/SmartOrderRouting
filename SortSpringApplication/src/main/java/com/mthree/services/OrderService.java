@@ -6,15 +6,14 @@ import com.mthree.models.Exchange;
 import com.mthree.models.OrderStock;
 import com.mthree.models.TradingCompanies;
 
-import com.mthree.repositories.ConsumersRepository;
-import com.mthree.repositories.ExchangeRepository;
-import com.mthree.repositories.OrderRepository;
-import com.mthree.repositories.TradingCompaniesRepository;
+import com.mthree.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -56,9 +55,29 @@ public class OrderService {
         return message;
     }
 
-    public void cancelOrder(OrderStock o){
-        orderRepo.deleteById(o.getOrderId());
-        logger.info("Order Id " + o.getOrderId()+ "is deleted");
+    public List<String> getOrders(){
+        List<String> orders = new ArrayList<>();
+        List<OrderStock> obtainList = orderRepo.findAll();
+        orders.add(String.valueOf(obtainList.size()));
+        for(OrderStock o : obtainList){
+            TradingCompanies trCompany = o.getCompany();
+            Consumers c = o.getConsumers();
+            String[] arr = o.getOrderStatus().split(" ");
+            String data = o.getOrderId() + "-" + o.getNumberOfShares() + "-" + o.getTypeOfOrder() + "-" + o.getPrice() + "-" + arr[0] + "-" + trCompany.getCompanyId() + "-" + c.getConsumersId() + "-" + arr[1];
+            orders.add(data);
+        }
+        return orders;
+    }
+
+    public String cancelOrder(int id){
+        String message = "Failed to Delete !!!";
+        Optional<OrderStock> order = orderRepo.findById(id);
+        if(order.isPresent()){
+            orderRepo.deleteById(id);
+            logger.info("Order Id " + id + " is deleted");
+            message = "Successfully Deleted !!!";
+        }
+        return message;
     }
 
 

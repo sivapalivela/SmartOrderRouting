@@ -1,54 +1,41 @@
 package com.mthree.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-public class OrderStock {
+public class DarkPoolOrderBook {
     @Id
-    @GeneratedValue
     private int orderId;
     private int numberOfShares;
     private String orderExchangeId;
     private String typeOfOrder;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "com_id", referencedColumnName = "companyId")
-    private TradingCompanies company;
-
+    private String Company;
     private double price;
     private Date timeStamp = new Date();
-
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "exchangeId", nullable = false)
-    private Exchange exchange;
-
     private String orderStatus;
+    private String user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "consumerid", nullable = false, referencedColumnName = "consumersId")
-    private Consumers consumers;
+    @JoinColumn(name = "darkPool", nullable = false)
+    private Sort sort;
 
-    public OrderStock() {
+
+
+    public DarkPoolOrderBook() {
     }
 
-    public OrderStock(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, TradingCompanies company, double price, Date timeStamp, Exchange exchange, String orderStatus) {
+    public DarkPoolOrderBook(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, String company, double price, Date timeStamp, String orderStatus, String user, Sort sort) {
         this.orderId = orderId;
         this.numberOfShares = numberOfShares;
         this.orderExchangeId = orderExchangeId;
         this.typeOfOrder = typeOfOrder;
-        this.company = company;
+        Company = company;
         this.price = price;
         this.timeStamp = timeStamp;
-        this.exchange = exchange;
         this.orderStatus = orderStatus;
-//        this.user = user;
+        this.user = user;
+        this.sort = sort;
     }
 
     public int getOrderId() {
@@ -83,12 +70,12 @@ public class OrderStock {
         this.typeOfOrder = typeOfOrder;
     }
 
-    public TradingCompanies getCompany() {
-        return company;
+    public String getCompany() {
+        return Company;
     }
 
-    public void setCompany(TradingCompanies company) {
-        this.company = company;
+    public void setCompany(String company) {
+        Company = company;
     }
 
     public double getPrice() {
@@ -107,14 +94,6 @@ public class OrderStock {
         this.timeStamp = timeStamp;
     }
 
-    public Exchange getExchange() {
-        return exchange;
-    }
-
-    public void setExchange(Exchange exchange) {
-        this.exchange = exchange;
-    }
-
     public String getOrderStatus() {
         return orderStatus;
     }
@@ -123,27 +102,35 @@ public class OrderStock {
         this.orderStatus = orderStatus;
     }
 
-    public Consumers getConsumers() {
-        return consumers;
+    public String getUser() {
+        return user;
     }
 
-    public void setConsumers(Consumers consumers) {
-        this.consumers = consumers;
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public Sort getSort() {
+        return sort;
+    }
+
+    public void setSort(Sort sort) {
+        this.sort = sort;
     }
 
     @Override
     public String toString() {
-        return "OrderStock{" +
+        return "DarkPoolOrderBook{" +
                 "orderId=" + orderId +
                 ", numberOfShares=" + numberOfShares +
                 ", orderExchangeId='" + orderExchangeId + '\'' +
                 ", typeOfOrder='" + typeOfOrder + '\'' +
-                ", company=" + company +
+                ", Company='" + Company + '\'' +
                 ", price=" + price +
                 ", timeStamp=" + timeStamp +
-                ", exchange=" + exchange +
                 ", orderStatus='" + orderStatus + '\'' +
-//                ", user=" + user +
+                ", user='" + user + '\'' +
+                ", sort=" + sort +
                 '}';
     }
 }

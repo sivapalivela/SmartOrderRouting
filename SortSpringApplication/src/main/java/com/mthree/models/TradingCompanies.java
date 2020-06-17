@@ -16,6 +16,9 @@ public class TradingCompanies {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<OrderStock> orderStock;
 
+    @OneToMany(mappedBy = "company_name", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<TransactionBook> trans_company;
+
     public TradingCompanies() {
     }
 
@@ -24,6 +27,15 @@ public class TradingCompanies {
         this.companyName = companyName;
         this.marketCap = marketCap;
         this.orderStock = orderStock;
+    }
+
+
+    public Set<TransactionBook> getTrans_company() {
+        return trans_company;
+    }
+
+    public void setTrans_company(Set<TransactionBook> trans_company) {
+        this.trans_company = trans_company;
     }
 
     public String getCompanyId() {

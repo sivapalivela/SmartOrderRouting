@@ -1,13 +1,9 @@
 package com.mthree.services;
 
 import com.mthree.controllers.OrderController;
-import com.mthree.models.Exchange;
-import com.mthree.models.OrderStock;
-import com.mthree.models.TransactionBook;
-import com.mthree.repositories.ExchangeRepository;
-import com.mthree.repositories.OrderRepository;
-import com.mthree.repositories.SortRepository;
-import com.mthree.repositories.TransactionRepository;
+import com.mthree.models.*;
+import com.mthree.repositories.*;
+import net.bytebuddy.asm.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,32 +22,107 @@ public class SortService {
     @Autowired
     private TransactionRepository transactionRepo;
 
+    @Autowired
+    private ConsumersRepository consumerRepo;
+
+    @Autowired
+    private TradingCompaniesRepository tradeComRepo;
+
+    @Autowired
+    private SortRepository sortRepo;
+
+    @Autowired
+    private DarkPoolOrderRepository darkOrderRepo;
+
+    @Autowired
+    private DarkPoolTransRepository darkTransRepo;
+
     Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-    public Set<OrderStock> processTrade(int id, int range) {
+    public String processTrade(int id, int range) {
         Optional<OrderStock> o = orderRepo.findById(id);
+        String message = "Failed to process !!!";
         if (o.isPresent()) {
             OrderStock buyOrderObject = o.get();
             List<Exchange> exchangesList = exchangeRepo.findAll();
-            Set<OrderStock> result = new HashSet<>();
+            HashMap<Integer, Double> result = new HashMap<>();
+            TradingCompanies tc = buyOrderObject.getCompany();
             if (buyOrderObject.getTypeOfOrder().equals("BuyOrder")) {
-                // TODO : Search Dark Pool
-                for (Exchange ex : exchangesList) {
-                    for (OrderStock tempOrderObject : ex.getOrderBook()) {
-                        if (tempOrderObject.getTypeOfOrder().equals("SellOrder") && Math.abs(tempOrderObject.getPrice() - buyOrderObject.getPrice()) <= range) {
-                            result.add(tempOrderObject);
+                if (sortRepo.findAll().size() > 0) {
+                    List<Sort> sortList = sortRepo.findAll();
+                    for(Sort so : sortList){
+                        for(DarkPoolOrderBook darkOrder : so.getOrderBook()){
+                            if(darkOrder.getCompany().equals(tc.getCompanyId()) &&
+                                    darkOrder.getTypeOfOrder().equals("SellOrder") &&
+                                    Math.round(darkOrder.getPrice()) == Math.round(buyOrderObject.getPrice()) &&
+                                    darkOrder.getNumberOfShares() == buyOrderObject.getNumberOfShares()){
+
+                                DarkPoolTransactionBook darkTransaction = new DarkPoolTransactionBook();
+                                String genId = buyOrderObject.getOrderId() + "BDarkS" + darkOrder.getOrderId();
+                                darkTransaction.setTransId(genId);
+                                logger.info("Transaction Successful !!!" + "The transaction id id"+ genId);
+                                darkTransaction.setBuyerOrderId(buyOrderObject.getOrderId());
+                                darkTransaction.setSellerOrderId(darkOrder.getOrderId());
+                                darkTransaction.setBuyerSideExchange(darkOrder.getOrderExchangeId());
+                                darkTransaction.setSellerSideExchange(darkOrder.getOrderExchangeId());
+                                darkTransaction.setTransactionAmount(buyOrderObject.getNumberOfShares()*buyOrderObject.getPrice());
+                                darkTransaction.setNumberOfShares(buyOrderObject.getNumberOfShares());
+                                darkTransaction.setTimeStamp(new Date());
+                                Consumers c = buyOrderObject.getConsumers();
+                                Optional<Consumers> consumer_dark = consumerRepo.findById(c.getConsumersId());
+                                if(consumer_dark.isPresent()){
+                                    darkTransaction.setConsumer(consumer_dark.get().getConsumersId());
+                                }
+                                Sort dark_sort = darkOrder.getSort();
+                                Optional<Sort> d = sortRepo.findById(dark_sort.getId());
+                                if(d.isPresent()){
+                                    darkTransaction.setSort(d.get());
+                                }
+                                darkTransaction.setTrading_company(darkOrder.getCompany());
+                                darkTransRepo.save(darkTransaction);
+                                orderRepo.deleteByOrderId(buyOrderObject.getOrderId());
+                                darkOrderRepo.deleteByOrderId(darkOrder.getOrderId());
+                                message = "Transaction successful !!!";
+                                return message;
+                            }
                         }
                     }
                 }
-                return result;
+                for (Exchange ex : exchangesList) {
+                    for (OrderStock tempOrderObject : ex.getOrderBook()) {
+                        TradingCompanies tcSeller = tempOrderObject.getCompany();
+                        if (tc.getCompanyId().equals(tcSeller.getCompanyId()) && tempOrderObject.getTypeOfOrder().equals("SellOrder") && Math.abs(tempOrderObject.getPrice() - buyOrderObject.getPrice()) <= range) {
+                            result.put(tempOrderObject.getOrderId(), tempOrderObject.getPrice());
+                        }
+                    }
+                }
+
+                List<Map.Entry<Integer, Double>> list =
+                        new LinkedList<Map.Entry<Integer, Double>>(result.entrySet());
+                Collections.sort(list, new Comparator<Map.Entry<Integer, Double>>() {
+                    public int compare(Map.Entry<Integer, Double> o1,
+                                       Map.Entry<Integer, Double> o2) {
+                        return (o1.getValue()).compareTo(o2.getValue());
+                    }
+                });
+
+                HashMap<Integer, Double> temp = new LinkedHashMap<Integer, Double>();
+                for (Map.Entry<Integer, Double> aa : list) {
+                    temp.put(aa.getKey(), aa.getValue());
+                }
+                Map.Entry<Integer, Double> entry = temp.entrySet().iterator().next();
+                message = this.executeTrade(id, entry.getKey());
+                return message;
             } else {
-                return null;
+                message = "This is a Sell Order !!!";
+                return message;
             }
         }
-        return null;
+        return message;
     }
 
     public String executeTrade(int buyId, int sellId){
+        TransactionBook tb = new TransactionBook();
         Optional<OrderStock> buyOrderId = orderRepo.findById(buyId);
         Optional<OrderStock> sellOrderId = orderRepo.findById(sellId);
         if(buyOrderId.isPresent() && sellOrderId.isPresent()){
@@ -60,20 +131,27 @@ public class SortService {
             int sellOrderRemaining = sellOrderIdObject.getNumberOfShares() - buyOrderIdObject.getNumberOfShares();
             int buyOrderRemaining = buyOrderIdObject.getNumberOfShares() - sellOrderIdObject.getNumberOfShares();
 
+            String[] arr2 = sellOrderIdObject.getOrderStatus().split(" ");
             if (sellOrderRemaining <= 0) {
                 orderRepo.deleteByOrderId(sellOrderIdObject.getOrderId());
             } else {
+                String seller_status = "Partial " + arr2[1];
+                orderRepo.updateOrderByOrderStatus(seller_status, sellOrderIdObject.getOrderId());
                 orderRepo.updateOrderByNumberOfShares(sellOrderRemaining, sellOrderIdObject.getOrderId());
             }
 
+            String[] arr = buyOrderIdObject.getOrderStatus().split(" ");
             if(buyOrderRemaining <=0 ){
+                tb.setTypeOfTransaction("Executed " + arr[1]);
                 orderRepo.deleteByOrderId(buyOrderIdObject.getOrderId());
             }
             else{
+                String status = "Partial " + arr[1];
+                tb.setTypeOfTransaction(status);
+                orderRepo.updateOrderByOrderStatus(status, buyOrderIdObject.getOrderId());
                 orderRepo.updateOrderByNumberOfShares(buyOrderRemaining,buyOrderIdObject.getOrderId());
             }
 
-            TransactionBook tb = new TransactionBook();
             String transId = buyOrderIdObject.getOrderId() + "BtransS" + sellOrderIdObject.getOrderId();
             tb.setTransId(transId);
             tb.setBuyerOrderId(buyOrderIdObject.getOrderId());
@@ -84,8 +162,14 @@ public class SortService {
             tb.setNumberOfShares(buyOrderIdObject.getNumberOfShares());
             tb.setTimeStamp(new Date());
             Optional<Exchange> buyExchange = exchangeRepo.findById(buyOrderIdObject.getOrderExchangeId());
-            if(buyExchange.isPresent()){
+            TradingCompanies tCompany = buyOrderIdObject.getCompany();
+            Optional<TradingCompanies> tradeCompany = tradeComRepo.findById(tCompany.getCompanyId());
+            Consumers c = buyOrderIdObject.getConsumers();
+            Optional<Consumers> consumer = consumerRepo.findById(c.getConsumersId());
+            if(buyExchange.isPresent() && consumer.isPresent() && tradeCompany.isPresent()){
                 tb.setExchange(buyExchange.get());
+                tb.setConsumers(consumer.get());
+                tb.setCompany_name(tradeCompany.get());
             }
             else{
                 logger.info("Transaction creation failed !!!");

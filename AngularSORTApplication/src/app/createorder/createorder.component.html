@@ -1,0 +1,70 @@
+<mat-toolbar color="primary">
+    Create your Buy or Sell Order ! ! !
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+<div class="example-form" >
+    <form (ngSubmit) = "onSubmit()">
+        <div>
+            <mat-form-field class="indesign">
+                <mat-label>Number of Shares</mat-label>
+                <input matInput type="number" value=0 id = "numberOfShares" [(ngModel)]="numberOfShares" [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="indesign">
+                <mat-label>Select Stock</mat-label>
+                <mat-select [(ngModel)]="selectedStock" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let stock of Stocks" [value]="stock">
+                    {{stock}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="indesign">
+                <mat-label>Price per Share</mat-label>
+                <input matInput type="number" value=0 id = "sharePrice" [(ngModel)]="sharePrice" [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="indesign">
+                <mat-label>Buffer Range</mat-label>
+                <input matInput type="number" value=0 id = "bufferRange" [(ngModel)]="bufferRange" [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="indesign">
+                <mat-label>Select Order Type</mat-label>
+                <mat-select [(ngModel)]="selectedOrder" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let order of orderType" [value]="order">
+                    {{order}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="indesign">
+                <mat-label>Select Exchange</mat-label>
+                <mat-select [(ngModel)]="selectedExchange" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let exchange of Exchanges" [value]="exchange">
+                    {{exchange}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 5%;"></div>
+        <div style="width: 20%;margin-left: auto;margin-right: auto;">
+            <button mat-raised-button color="primary">Create</button>
+        </div>
+    <!--
+        username
+    orderstatus -->
+    </form>
+</div>

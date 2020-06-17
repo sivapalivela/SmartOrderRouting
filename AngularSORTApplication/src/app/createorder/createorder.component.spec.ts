@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageComponent } from './main-page.component';
+import { CreateorderComponent } from './createorder.component';
 
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+describe('CreateorderComponent', () => {
+  let component: CreateorderComponent;
+  let fixture: ComponentFixture<CreateorderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageComponent ]
+      declarations: [ CreateorderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(CreateorderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

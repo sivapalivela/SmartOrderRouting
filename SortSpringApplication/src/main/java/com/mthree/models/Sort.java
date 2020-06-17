@@ -2,6 +2,7 @@ package com.mthree.models;
 
 import javax.persistence.*;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,16 +10,18 @@ import java.util.Set;
 public class Sort {
     @Id
     private int id;
-//    TODO: Discuss sort orderBooks
-    @OneToMany()
-    private Set<OrderStock> orderBook;
-    @OneToMany()
-    private Map<String,OrderStock> transactions;
+
+    @OneToMany(mappedBy = "sort", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<DarkPoolOrderBook> orderBook = new HashSet<>();
+
+    @OneToMany(mappedBy = "sort", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<DarkPoolTransactionBook> transactions = new HashSet<>();
+
 
     public Sort() {
     }
 
-    public Sort(int id, Set<OrderStock> orderBook, Map<String, OrderStock> transactions) {
+    public Sort(int id, Set<DarkPoolOrderBook> orderBook, Set<DarkPoolTransactionBook> transactions) {
         this.id = id;
         this.orderBook = orderBook;
         this.transactions = transactions;
@@ -32,26 +35,26 @@ public class Sort {
         this.id = id;
     }
 
-    public Set<OrderStock> getOrderBook() {
+    public Set<DarkPoolOrderBook> getOrderBook() {
         return orderBook;
     }
 
-    public void setOrderBook(Set<OrderStock> orderBook) {
-        this.orderBook = orderBook;
-    }
-
-    public Map<String, OrderStock> getTransactions() {
+    public Set<DarkPoolTransactionBook> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Map<String, OrderStock> transactions) {
+    public void setTransactions(Set<DarkPoolTransactionBook> transactions) {
         this.transactions = transactions;
+    }
+
+    public void setOrderBook(Set<DarkPoolOrderBook> orderBook) {
+        this.orderBook = orderBook;
     }
 
     @Override
     public String toString() {
         return "Sort{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", orderBook=" + orderBook +
                 ", transactions=" + transactions +
                 '}';

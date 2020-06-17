@@ -1,1 +1,33 @@
-<p>trader works!</p>
+<mat-toolbar>
+    <span style="padding-left:33%;"></span>
+    Hello Trader !!! These are the list of trades waiting for your approval
+</mat-toolbar>
+<div class="headerdiv">
+<mat-card style="background-color: whitesmoke;">
+    <span style="padding-left: 2%;font-weight: bold;font-size: larger;">Order Id</span>
+    <span style="padding-left: 2%;font-weight: bold;font-size: larger;">Number of Shares</span>
+    <span style="padding-left: 2%;font-weight: bold;font-size: larger;">Type of Order</span>
+    <span style="padding-left: 2%;font-weight: bold;font-size: larger;">Price per Share</span>
+    <span style="padding-left: 2%;font-weight: bold;font-size: larger;">Order Status</span>
+    <span style="padding-left: 4%;font-weight: bold;font-size: larger;">Company ID</span>
+    <span style="padding-left: 4%;font-weight: bold;font-size: larger;">Name of User</span>
+    <span style="padding-left: 15%;font-weight: bold;font-size: larger;">Options</span>
+</mat-card>
+<div style="margin-bottom: 2%;"></div>
+
+<div *ngFor = "let order of Orders">
+    <mat-card style="background-color: whitesmoke;">
+        <span style="padding-left: 4%;;">{{order[0]}}</span>
+        <span style="padding-left: 8%;">{{order[1]}}</span>
+        <span style="padding-left: 8%;">{{order[2]}}</span>
+        <span style="padding-left: 7%;">{{order[3]}}</span>
+        <span style="padding-left: 7.5%;">{{order[4]}}</span>
+        <span style="padding-left: 7%;">{{order[5]}}</span>
+        <span style="padding-left: 8%;">{{order[6]}}</span>
+        <button (click) = "accept(order[0],order[7])" mat-raised-button color="primary" style="position: absolute;right: 11%; bottom: 15%;">Accept</button>
+        <button (click) = "reject(order[0])" mat-raised-button color="warn" style="position: absolute;right: 3%; bottom: 15%;">Reject</button>
+    </mat-card>
+    <div style="margin-bottom: 2%;"></div>
+</div>
+</div>
+

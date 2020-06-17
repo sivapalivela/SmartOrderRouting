@@ -20,4 +20,9 @@ public interface OrderRepository extends JpaRepository<OrderStock,Integer> {
     @Transactional
     @Query(value = "delete from order_stock where order_id = ?1", nativeQuery = true)
     public void deleteByOrderId(int id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update order_stock set order_status = ?1 where order_id = ?2", nativeQuery = true)
+    public int updateOrderByOrderStatus(String status, int id);
 }
