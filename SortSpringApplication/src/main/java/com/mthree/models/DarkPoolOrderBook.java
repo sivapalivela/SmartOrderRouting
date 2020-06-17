@@ -1,6 +1,7 @@
 package com.mthree.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class DarkPoolOrderBook {
     private String typeOfOrder;
     private String Company;
     private double price;
-    private Date timeStamp = new Date();
+    private LocalDate timeStamp = java.time.LocalDate.now();
     private String orderStatus;
     private String user;
 
@@ -25,7 +26,7 @@ public class DarkPoolOrderBook {
     public DarkPoolOrderBook() {
     }
 
-    public DarkPoolOrderBook(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, String company, double price, Date timeStamp, String orderStatus, String user, Sort sort) {
+    public DarkPoolOrderBook(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, String company, double price, LocalDate timeStamp, String orderStatus, String user, Sort sort) {
         this.orderId = orderId;
         this.numberOfShares = numberOfShares;
         this.orderExchangeId = orderExchangeId;
@@ -86,11 +87,11 @@ public class DarkPoolOrderBook {
         this.price = price;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(LocalDate timeStamp) {
         this.timeStamp = timeStamp;
     }
 

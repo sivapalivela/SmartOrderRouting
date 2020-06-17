@@ -1,6 +1,9 @@
+.flex-spacer{
+    flex: 1 1 auto;
+}
+
 .headerdiv{
     margin-top: 3%;
-    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }

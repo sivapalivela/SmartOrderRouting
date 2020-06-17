@@ -7,6 +7,7 @@ import com.mthree.models.OrderStock;
 import com.mthree.models.TradingCompanies;
 
 import com.mthree.repositories.*;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,15 +70,19 @@ public class OrderService {
         return orders;
     }
 
-    public String cancelOrder(int id){
+    public JSONObject cancelOrder(int id){
         String message = "Failed to Delete !!!";
+        JSONObject jo = new JSONObject();
         Optional<OrderStock> order = orderRepo.findById(id);
         if(order.isPresent()){
             orderRepo.deleteById(id);
             logger.info("Order Id " + id + " is deleted");
             message = "Successfully Deleted !!!";
+            jo.put("text" , message);
+            return jo;
         }
-        return message;
+        jo.put("text" , message);
+        return jo;
     }
 
 

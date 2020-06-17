@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    Your transactions till now !!!
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<div class="headerdiv">
+  <mat-card style="background-color: whitesmoke;">
+      <span class="headstyle" style="padding-left: 3%;">Transaction ID</span>
+      <span class="headstyle" style="padding-left: 6%;">Number of Shares</span>
+      <span class="headstyle" style="padding-left: 6%;">Date</span>
+      <span class="headstyle" style="padding-left: 6%;">Transaction Amount</span>
+      <span class="headstyle" style="padding-left: 4%;">Order Status</span>
+      <span class="headstyle" style="padding-left: 4%;">Company ID</span>
+  </mat-card>
+  <div style="margin-bottom: 0.5%;"></div>
+  
+  <div *ngFor = "let transaction of transactions">
+      <mat-card style="background-color: whitesmoke;">
+          <span style="padding-left: 4%;font-weight: bold;">{{transaction[0]}}</span>
+          <span style="padding-left: 14%;font-weight: bold;">{{transaction[1]}}</span>
+          <span style="padding-left: 11%;font-weight: bold;">{{transaction[2]}}</span>
+          <span style="padding-left: 9%;font-weight: bold;">{{transaction[3]}}</span>
+          <span style="padding-left: 13%;font-weight: bold;">{{transaction[4]}}</span>
+          <span style="padding-left: 9%;font-weight: bold;">{{transaction[5]}}</span>
+      </mat-card>
+      <div style="margin-bottom: 0.5%;"></div>
+  </div>
+  </div>

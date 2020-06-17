@@ -1,8 +1,13 @@
 <mat-toolbar color = "primary">
     <span style="padding-left: 4%;"></span>
     Smart Order Routing
+
     <span class="flex-spacer"></span>
-    <button mat-raised-button color = "accent" (click) = "createOrder()">Create Order</button>
+    <p style="margin-bottom: 0%;color: gold;">Today's Transaction Value : {{transValue}}</p>
+    <span style="margin-right: 1%;"></span>
+    <button mat-raised-button color = "accent" (click) = "createOrder()" *ngIf = "consumerSwitchPoint">Create Order</button>
+    <span style="padding-right:1%;"></span>
+    <button mat-raised-button color = "accent" (click) = "viewTransactions()" *ngIf = "consumerSwitchPoint">View Transactions</button>
     <span style="padding-right:1%;"></span>
 
     <button mat-button [matMenuTriggerFor]="menu">Shiva Kumar</button>
@@ -12,4 +17,13 @@
     </mat-menu>
     <span style="padding-left: 4%;"></span>
 </mat-toolbar>
-<app-trader></app-trader>
+<app-consumer *ngIf = "consumerSwitchPoint"></app-consumer>
+<app-trader *ngIf = "traderSwitchPoint"></app-trader>
+<div style="margin-bottom: 3%;"></div>
+<mat-toolbar color = "primary" style="position: fixed;bottom: 0;">
+    <span style="padding-right: 5%;"></span>
+    Smart Order Routing
+    <span class="flex-spacer"></span>
+    Smart Order Routing
+    <span style="padding-right: 5%;"></span>
+</mat-toolbar>

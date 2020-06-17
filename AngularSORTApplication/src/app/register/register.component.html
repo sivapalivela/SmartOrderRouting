@@ -1,0 +1,73 @@
+<div style="width: 100%;overflow: hidden;">
+    <div class="topheader">
+        <div class = "stylehead">
+            <h2 style="padding-top: 4%;margin-bottom: 1%;color: #3f51b5;">REGISTER</h2>
+            <div style="border-bottom: 4px solid #3f51b5;width: 15%;margin-left: auto;margin-right: auto;"></div>
+        </div>
+        <div class="formdiv">
+            <form (ngSubmit) = "onSubmit()">
+                <div style="margin-bottom: 4%;">
+                    <mat-form-field class="indesign">
+                        <mat-label>UserName</mat-label>
+                        <input matInput type="text" id = "username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                    <span style="margin-right: 12%;"></span>
+                    <mat-form-field class="indesign">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" id = "password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                </div>
+
+                <div style="margin-bottom: 4%;">
+                    <mat-form-field class="indesign">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" id = "firstname" [(ngModel)]="firstname" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                    <span style="margin-right: 12%;"></span>
+                    <mat-form-field class="indesign">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" id = "lastname" [(ngModel)]="lastname" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                </div>
+
+                <div style="margin-bottom: 4%;">
+                    <mat-form-field class="indesign">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" id = "email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                    <span style="margin-right: 12%;"></span>
+                    <mat-form-field class="indesign">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput type="number" id = "mnumber" [(ngModel)]="mnumber" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                </div>
+
+
+                <div style="margin-bottom: 4%;">
+                    <mat-form-field class="indesign">
+                        <mat-label>Location</mat-label>
+                        <input matInput type="text" id = "location" [(ngModel)]="location" [ngModelOptions]="{standalone: true}" required>
+                    </mat-form-field>
+                    <span style="margin-right: 12%;"></span>
+                    <mat-form-field class="indesign">
+                        <mat-label>Select Home Exchange</mat-label>
+                        <mat-select [(ngModel)]="homeExchange" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let ex of exchange" [value]="ex">
+                            {{ex}}
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+        
+                <div style="margin-top: 7%;"></div>
+                <div style="width: 20%;margin-left: auto;margin-right: auto;padding-bottom: 10%;">
+                    <span><button mat-raised-button color="primary">Register</button></span>
+                </div>
+            </form>
+
+            <div style="width: 28%;margin-left: auto;margin-right: auto;padding-bottom: 10%;">
+                <button mat-raised-button color="primary" (click) = "backtologin()">Back to Login</button>
+            </div>
+        </div>
+    </div>
+</div>

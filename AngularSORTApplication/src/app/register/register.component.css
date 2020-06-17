@@ -1,0 +1,20 @@
+.topheader{
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    height: 100%;
+    margin-top: 12%;
+    border-radius: 5px;
+}
+
+.stylehead{
+    text-align: center;
+}
+
+.formdiv{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}

@@ -1,1 +1,32 @@
-<p>consumer works!</p>
+<mat-toolbar>
+    <span style="padding-left:28%;"></span>
+    Welcome User !!! Here is the order book for your home exchange BSE. Take a look !!!
+</mat-toolbar>
+
+<div class="headerdiv">
+<mat-card style="background-color: whitesmoke;">
+    <span class="headstyle" style="padding-left: 3%;">Order Id</span>
+    <span class="headstyle" style="padding-left: 6%;">Number of Shares</span>
+    <span class="headstyle" style="padding-left: 6%;">Type of Order</span>
+    <span class="headstyle" style="padding-left: 6%;">Price Per Share</span>
+    <span class="headstyle" style="padding-left: 6%;">Order Status</span>
+    <span class="headstyle" style="padding-left: 5%;">Company ID</span>
+    <span class="headstyle" style="padding-left: 6%;">Name of User</span>
+</mat-card>
+<div style="margin-bottom: 0.5%;"></div>
+
+<div *ngFor = "let order of orderBook">
+    <mat-card style="background-color: whitesmoke;" [style.color] = "order[8]">
+        <span style="padding-left: 5%;font-weight: bold;">{{order[0]}}</span>
+        <span style="padding-left: 12%;font-weight: bold;">{{order[1]}}</span>
+        <span style="padding-left: 13%;font-weight: bold;">{{order[2]}}</span>
+        <span style="padding-left: 10%;font-weight: bold;">{{order[3]}}</span>
+        <span style="padding-left: 11%;font-weight: bold;">{{order[4]}}</span>
+        <span style="padding-left: 8%;font-weight: bold;">{{order[5]}}</span>
+        <span style="padding-left: 9%;font-weight: bold;">{{order[6]}}</span>
+    </mat-card>
+    <div style="margin-bottom: 0.5%;"></div>
+</div>
+</div>
+
+

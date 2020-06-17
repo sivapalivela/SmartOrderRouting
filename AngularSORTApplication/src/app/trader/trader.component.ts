@@ -22,7 +22,6 @@ export class TraderComponent implements OnInit {
       for(let i=1;i<=result[0];i++){
         let temp = result[i].split("-");
         this.Orders.push(temp);
-        console.log(temp);
       }
     });
   }
@@ -30,18 +29,16 @@ export class TraderComponent implements OnInit {
   accept(id,range){
     this.http.post('http://localhost:8080/sort/processtrade/' + id + "/" + range, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType: 'text' }).subscribe(
       result => {
-        console.log(result);
-        alert(result);
+        alert(result['text']);
         this.router.navigate(['']);
       }
     );
   }
 
   reject(id){
-    this.http.post('http://localhost:8080/orders/deleteOrder/' + id, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType: 'text' }).subscribe(
+    this.http.post('http://localhost:8080/orders/deleteOrder/' + id, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType : 'text' }).subscribe(
       result => {
-        console.log(result);
-        alert(result);
+        alert(result['text']);
         this.router.navigate(['']);
       }
     );

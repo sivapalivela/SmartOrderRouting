@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import { ViewtransactionsComponent } from './viewtransactions/viewtransactions.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import {MatCardModule} from '@angular/material/card';
     DashboardComponent,
     TraderComponent,
     ConsumerComponent,
-    CreateorderComponent
+    CreateorderComponent,
+    ViewtransactionsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +45,12 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientModule,
     MatInputModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   entryComponents: [
-    CreateorderComponent
+    CreateorderComponent,
+    ViewtransactionsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

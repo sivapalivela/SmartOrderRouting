@@ -12,6 +12,7 @@ public class ConsumersController {
     @Autowired
     private ConsumersService consumersService;
 
+    @CrossOrigin("http://localhost:4200")
     @PostMapping("/createconsumer/{exchangeid}")
     public String createConsumer(@RequestBody Consumers c, @PathVariable String exchangeid){
         return consumersService.createConsumers(c,exchangeid);

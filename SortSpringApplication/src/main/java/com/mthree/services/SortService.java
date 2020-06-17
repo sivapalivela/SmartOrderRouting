@@ -4,6 +4,7 @@ import com.mthree.controllers.OrderController;
 import com.mthree.models.*;
 import com.mthree.repositories.*;
 import net.bytebuddy.asm.Advice;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,9 @@ public class SortService {
 
     Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-    public String processTrade(int id, int range) {
+    public JSONObject processTrade(int id, int range) {
         Optional<OrderStock> o = orderRepo.findById(id);
+        JSONObject jo = new JSONObject();
         String message = "Failed to process !!!";
         if (o.isPresent()) {
             OrderStock buyOrderObject = o.get();
@@ -67,7 +69,7 @@ public class SortService {
                                 darkTransaction.setSellerSideExchange(darkOrder.getOrderExchangeId());
                                 darkTransaction.setTransactionAmount(buyOrderObject.getNumberOfShares()*buyOrderObject.getPrice());
                                 darkTransaction.setNumberOfShares(buyOrderObject.getNumberOfShares());
-                                darkTransaction.setTimeStamp(new Date());
+                                darkTransaction.setTimeStamp(java.time.LocalDate.now());
                                 Consumers c = buyOrderObject.getConsumers();
                                 Optional<Consumers> consumer_dark = consumerRepo.findById(c.getConsumersId());
                                 if(consumer_dark.isPresent()){
@@ -83,7 +85,8 @@ public class SortService {
                                 orderRepo.deleteByOrderId(buyOrderObject.getOrderId());
                                 darkOrderRepo.deleteByOrderId(darkOrder.getOrderId());
                                 message = "Transaction successful !!!";
-                                return message;
+                                jo.put("text",message);
+                                return jo;
                             }
                         }
                     }
@@ -112,13 +115,16 @@ public class SortService {
                 }
                 Map.Entry<Integer, Double> entry = temp.entrySet().iterator().next();
                 message = this.executeTrade(id, entry.getKey());
-                return message;
+                jo.put("text" , message);
+                return jo;
             } else {
                 message = "This is a Sell Order !!!";
-                return message;
+                jo.put("text" , message);
+                return jo;
             }
         }
-        return message;
+        jo.put("text" , message);
+        return jo;
     }
 
     public String executeTrade(int buyId, int sellId){
@@ -160,7 +166,7 @@ public class SortService {
             tb.setSellerSideExchange(sellOrderIdObject.getOrderExchangeId());
             tb.setTransactionAmount(buyOrderIdObject.getNumberOfShares()*buyOrderIdObject.getPrice());
             tb.setNumberOfShares(buyOrderIdObject.getNumberOfShares());
-            tb.setTimeStamp(new Date());
+            tb.setTimeStamp(java.time.LocalDate.now());
             Optional<Exchange> buyExchange = exchangeRepo.findById(buyOrderIdObject.getOrderExchangeId());
             TradingCompanies tCompany = buyOrderIdObject.getCompany();
             Optional<TradingCompanies> tradeCompany = tradeComRepo.findById(tCompany.getCompanyId());

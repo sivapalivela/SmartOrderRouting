@@ -26,7 +26,7 @@ public class ConsumersService {
             Exchange exObject = exchangeObject.get();
             c.setExchangeOfConsumers(exObject);
             comsumersRepo.save(c);
-            message = "Successfully added stock !!!";
+            message = "Successfully added user " + c.getConsumersId() + " !!!";
         }
         return message;
     }

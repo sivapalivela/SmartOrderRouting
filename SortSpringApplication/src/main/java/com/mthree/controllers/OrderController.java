@@ -2,6 +2,7 @@ package com.mthree.controllers;
 
 import com.mthree.models.OrderStock;
 import com.mthree.services.OrderService;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class OrderController {
 
     @CrossOrigin("http://localhost:4200")
     @PostMapping(value = "deleteOrder/{orderid}")
-    public String deleteOrder(@PathVariable String orderid){
+    public JSONObject deleteOrder(@PathVariable String orderid){
         return orderService.cancelOrder(Integer.parseInt(orderid));
     }
 

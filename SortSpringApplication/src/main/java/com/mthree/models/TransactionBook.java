@@ -3,6 +3,7 @@ package com.mthree.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class TransactionBook {
     private int sellerOrderId;
     private int numberOfShares;
     private double transactionAmount;
-    private Date timeStamp;
+    private LocalDate timeStamp = java.time.LocalDate.now();;
     private String typeOfTransaction;
     private String buyerSideExchange;
     private String sellerSideExchange;
@@ -36,7 +37,7 @@ public class TransactionBook {
     public TransactionBook() {
     }
 
-    public TransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, Date timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, Exchange exchange, Consumers consumers) {
+    public TransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, LocalDate timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, Exchange exchange, Consumers consumers) {
         this.transId = transId;
         this.buyerOrderId = buyerOrderId;
         this.sellerOrderId = sellerOrderId;
@@ -98,11 +99,11 @@ public class TransactionBook {
         this.transactionAmount = transactionAmount;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(LocalDate timeStamp) {
         this.timeStamp = timeStamp;
     }
 

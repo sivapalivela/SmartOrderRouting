@@ -1,7 +1,7 @@
 package com.mthree.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class DarkPoolTransactionBook {
@@ -11,7 +11,7 @@ public class DarkPoolTransactionBook {
     private int sellerOrderId;
     private int numberOfShares;
     private double transactionAmount;
-    private Date timeStamp;
+    private LocalDate timeStamp = java.time.LocalDate.now();
     private String typeOfTransaction;
     private String buyerSideExchange;
     private String sellerSideExchange;
@@ -24,7 +24,7 @@ public class DarkPoolTransactionBook {
     public DarkPoolTransactionBook() {
     }
 
-    public DarkPoolTransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, Date timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, String consumer, String trading_company, Sort sort) {
+    public DarkPoolTransactionBook(String transId, int buyerOrderId, int sellerOrderId, int numberOfShares, double transactionAmount, LocalDate timeStamp, String typeOfTransaction, String buyerSideExchange, String sellerSideExchange, String consumer, String trading_company, Sort sort) {
         this.transId = transId;
         this.buyerOrderId = buyerOrderId;
         this.sellerOrderId = sellerOrderId;
@@ -79,11 +79,11 @@ public class DarkPoolTransactionBook {
         this.transactionAmount = transactionAmount;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(LocalDate timeStamp) {
         this.timeStamp = timeStamp;
     }
 

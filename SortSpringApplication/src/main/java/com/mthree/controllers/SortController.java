@@ -2,6 +2,7 @@ package com.mthree.controllers;
 
 import com.mthree.models.OrderStock;
 import com.mthree.services.SortService;
+import net.minidev.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,15 @@ public class SortController {
 
     @CrossOrigin("http://localhost:4200")
     @PostMapping("/processtrade/{id}/{range}")
-    public String processTrade(@PathVariable() String id, @PathVariable String range){
+    public JSONObject processTrade(@PathVariable() String id, @PathVariable String range){
         logger.info("A Process Trade request is received with in the range of" + range);
         return sortService.processTrade(Integer.parseInt(id), Integer.parseInt(range));
     }
 
-    @CrossOrigin("http://localhost:4200")
-    @PostMapping("/executetrade/{buyerid}/{sellerid}")
-    public String executeTrade(@PathVariable String buyerId, @PathVariable String sellerId){
-        logger.info("A Execute Trade request has been called for the seller Id" + sellerId);
-        return sortService.executeTrade(Integer.parseInt(buyerId), Integer.parseInt(sellerId));
-    }
+//    @CrossOrigin("http://localhost:4200")
+//    @PostMapping("/executetrade/{buyerid}/{sellerid}")
+//    public String executeTrade(@PathVariable String buyerId, @PathVariable String sellerId){
+//        logger.info("A Execute Trade request has been called for the seller Id" + sellerId);
+//        return sortService.executeTrade(Integer.parseInt(buyerId), Integer.parseInt(sellerId));
+//    }
 }

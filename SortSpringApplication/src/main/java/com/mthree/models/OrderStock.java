@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +23,7 @@ public class OrderStock {
     private TradingCompanies company;
 
     private double price;
-    private Date timeStamp = new Date();
+    private LocalDate timeStamp = java.time.LocalDate.now();
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -38,7 +39,7 @@ public class OrderStock {
     public OrderStock() {
     }
 
-    public OrderStock(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, TradingCompanies company, double price, Date timeStamp, Exchange exchange, String orderStatus) {
+    public OrderStock(int orderId, int numberOfShares, String orderExchangeId, String typeOfOrder, TradingCompanies company, double price, LocalDate timeStamp, Exchange exchange, String orderStatus) {
         this.orderId = orderId;
         this.numberOfShares = numberOfShares;
         this.orderExchangeId = orderExchangeId;
@@ -48,7 +49,6 @@ public class OrderStock {
         this.timeStamp = timeStamp;
         this.exchange = exchange;
         this.orderStatus = orderStatus;
-//        this.user = user;
     }
 
     public int getOrderId() {
@@ -99,11 +99,11 @@ public class OrderStock {
         this.price = price;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(LocalDate timeStamp) {
         this.timeStamp = timeStamp;
     }
 

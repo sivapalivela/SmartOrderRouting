@@ -21,4 +21,10 @@ public class ExchangeController {
     public List<String> getExchange(){
         return exchangeService.getExchange();
     }
+
+    @CrossOrigin("http://localhost:4200")
+    @GetMapping("/getTodayTransValue")
+    public double getTransValue(){
+        return exchangeService.getTransValue();
+    }
 }
