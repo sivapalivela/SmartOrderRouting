@@ -8,9 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class CreateorderComponent implements OnInit {
 
-  //Replace later
-  consumersId : string = "Pbskumar";
-  //Replace later
+  consumersId : string = '';
 
   orderStatus : string = "Incomplete";
   orderType: Array<string> = ["BuyOrder", "SellOrder"];
@@ -29,6 +27,7 @@ export class CreateorderComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.consumersId = localStorage.getItem('username');
     this.getStocks();
     this.getExchanges();
   }

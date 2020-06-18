@@ -7,3 +7,8 @@
 .flex-spacer{
     flex: 1 1 auto;
 }
+
+.bgimage{
+  height: 100%;
+  background-image: url(../../assets/stock.jpg);
+}

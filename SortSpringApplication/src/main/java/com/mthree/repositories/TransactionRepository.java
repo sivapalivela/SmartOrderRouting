@@ -14,5 +14,5 @@ public interface TransactionRepository extends JpaRepository<TransactionBook,Str
     public List<TransactionBook> findConsumerById(String userId);
 
     @Query(value = "select sum(transaction_amount) from transaction_book where time_stamp = ?1", nativeQuery = true)
-    public double getTransactionAmount(String d);
+    public Double getTransactionAmount(String d);
 }

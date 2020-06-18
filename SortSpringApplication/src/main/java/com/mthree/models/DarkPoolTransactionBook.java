@@ -10,7 +10,7 @@ public class DarkPoolTransactionBook {
     private int buyerOrderId;
     private int sellerOrderId;
     private int numberOfShares;
-    private double transactionAmount;
+    private double transactionAmount = 0;
     private LocalDate timeStamp = java.time.LocalDate.now();
     private String typeOfTransaction;
     private String buyerSideExchange;

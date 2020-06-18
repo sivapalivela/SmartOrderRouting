@@ -1,0 +1,30 @@
+.topheader{
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    height: 100%;
+    margin-top: 8%;
+    border-radius: 5px;
+}
+
+.stylehead{
+    text-align: center;
+}
+
+.formdiv{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+
+.outerdiv{
+    width: 100%;
+    overflow: hidden;
+}
+
+.indesign {
+    width: 100%;
+    text-align: center;
+}

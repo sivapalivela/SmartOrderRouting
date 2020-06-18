@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  username : string;
+  password : string;
+  users : Array<string> = ["User", "Trader"];
+  selectedUser : string;
+
+  constructor(private router: Router, private http : HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +24,25 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-    this.router.navigate(['/dashboard']);
+    const data = {"username" : this.username,
+                  "password" : this.password,
+                  "typeofuser" : this.selectedUser,
+                  }
+    this.http.post('http://localhost:8080/consumers/login', data, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType: 'text' }).subscribe(
+      result => {
+        let d = JSON.stringify(JSON.parse(result)).substring(9).replace('"}','');
+        console.log(d);
+        alert(d);
+        if(d.split(' ').length > 3){
+          this.router.navigate(['']);
+        }
+        else{
+          localStorage.setItem("username", d.split(' ')[2]);
+          localStorage.setItem("Typeofuser", this.selectedUser);
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    );
   }
 
 }

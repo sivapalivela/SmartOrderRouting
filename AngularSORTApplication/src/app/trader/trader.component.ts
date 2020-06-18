@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 })
 export class TraderComponent implements OnInit {
 
+  trader : string = '';
   Orders = [];
 
   constructor(private http: HttpClient, private router : Router) { }
 
   ngOnInit(): void {
+    this.trader = localStorage.getItem('username');
     this.displayOrders();
   }
 

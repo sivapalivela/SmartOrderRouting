@@ -2,6 +2,7 @@ package com.mthree.services;
 
 import com.mthree.models.Exchange;
 import com.mthree.models.TradingCompanies;
+import com.mthree.repositories.DarkPoolTransRepository;
 import com.mthree.repositories.ExchangeRepository;
 import com.mthree.repositories.TradingCompaniesRepository;
 import com.mthree.repositories.TransactionRepository;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExchangeService {
@@ -21,6 +23,9 @@ public class ExchangeService {
 
     @Autowired
     private TransactionRepository transRepo;
+
+    @Autowired
+    private DarkPoolTransRepository transDarkRepo;
 
     public List<String> getExchange(){
         List<String> exchanges = new ArrayList<>();
@@ -35,7 +40,19 @@ public class ExchangeService {
     public double getTransValue(){
         LocalDate d = java.time.LocalDate.now();
         String date = d.toString();
-        return transRepo.getTransactionAmount(date);
-//        return 0.0;
+        double total = 0;
+        if(transRepo.findAll().size() > 0){
+            Double amount = transRepo.getTransactionAmount(date);
+            if(amount != null)
+                total += amount;
+        }
+        if(transDarkRepo.findAll().size() > 0){
+            Double amount = transDarkRepo.getTransactionAmount(date);
+            if(amount != null){
+                total += amount;
+            }
+        }
+        System.out.println(total);
+        return total;
     }
 }

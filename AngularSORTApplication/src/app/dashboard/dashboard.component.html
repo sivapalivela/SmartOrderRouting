@@ -1,3 +1,4 @@
+<div class="bgimage">
 <mat-toolbar color = "primary">
     <span style="padding-left: 4%;"></span>
     Smart Order Routing
@@ -10,10 +11,10 @@
     <button mat-raised-button color = "accent" (click) = "viewTransactions()" *ngIf = "consumerSwitchPoint">View Transactions</button>
     <span style="padding-right:1%;"></span>
 
-    <button mat-button [matMenuTriggerFor]="menu">Shiva Kumar</button>
+    <button mat-button [matMenuTriggerFor]="menu">{{username}}</button>
     <mat-menu #menu="matMenu">
     <button mat-menu-item><span class="entypo-user"></span>Profile</button>
-    <button mat-menu-item><span class="entypo-right"></span>Logout</button>
+    <button mat-menu-item (click) = "logout()"><span class="entypo-right"></span>Logout</button>
     </mat-menu>
     <span style="padding-left: 4%;"></span>
 </mat-toolbar>
@@ -27,3 +28,4 @@
     Smart Order Routing
     <span style="padding-right: 5%;"></span>
 </mat-toolbar>
+</div>

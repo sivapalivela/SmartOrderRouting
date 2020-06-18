@@ -9,11 +9,13 @@ import { HttpClient } from '@angular/common/http';
 
 export class ConsumerComponent implements OnInit{
 
-  orderBook : Array<string> = []
+  orderBook : Array<string> = [];
+  user : string = '';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem('username');
     this.viewOrders();
   }
 
