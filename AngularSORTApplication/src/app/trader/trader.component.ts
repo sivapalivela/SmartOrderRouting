@@ -32,7 +32,7 @@ export class TraderComponent implements OnInit {
     this.http.post('http://localhost:8080/sort/processtrade/' + id + "/" + range, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType: 'text' }).subscribe(
       result => {
         alert(result['text']);
-        this.router.navigate(['']);
+        this.router.navigate(['/dashboard']);
       }
     );
   }
@@ -41,7 +41,7 @@ export class TraderComponent implements OnInit {
     this.http.post('http://localhost:8080/orders/deleteOrder/' + id, { headers: new HttpHeaders().set('Content-Type', 'application/json'), responseType : 'text' }).subscribe(
       result => {
         alert(result['text']);
-        this.router.navigate(['']);
+        this.router.navigate(['/dashboard']);
       }
     );
   }

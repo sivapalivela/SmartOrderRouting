@@ -21,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { ViewtransactionsComponent } from './viewtransactions/viewtransactions.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterComponent } from './register/register.component';
     ConsumerComponent,
     CreateorderComponent,
     ViewtransactionsComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

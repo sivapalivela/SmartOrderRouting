@@ -4,6 +4,10 @@
     Smart Order Routing
 
     <span class="flex-spacer"></span>
+    <p style="margin-bottom: 0%;color: gold;">Today's Market Value : {{marketvalue}}</p>
+    <span style="margin-right: 2%;"></span>
+    <p style="margin-bottom: 0%;color: gold;">Overall Transactions Value of {{Exchange}} : {{overallTransValue}}</p>
+    <span style="margin-right: 2%;"></span>
     <p style="margin-bottom: 0%;color: gold;">Today's Transaction Value : {{transValue}}</p>
     <span style="margin-right: 1%;"></span>
     <button mat-raised-button color = "accent" (click) = "createOrder()" *ngIf = "consumerSwitchPoint">Create Order</button>
@@ -13,7 +17,7 @@
 
     <button mat-button [matMenuTriggerFor]="menu">{{username}}</button>
     <mat-menu #menu="matMenu">
-    <button mat-menu-item><span class="entypo-user"></span>Profile</button>
+    <button mat-menu-item><span class="entypo-user" (click) = "openprofile()"></span>Profile</button>
     <button mat-menu-item (click) = "logout()"><span class="entypo-right"></span>Logout</button>
     </mat-menu>
     <span style="padding-left: 4%;"></span>

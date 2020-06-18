@@ -33,12 +33,13 @@ export class LoginComponent implements OnInit {
         let d = JSON.stringify(JSON.parse(result)).substring(9).replace('"}','');
         console.log(d);
         alert(d);
-        if(d.split(' ').length > 3){
+        if(d.split(' ').length > 4){
           this.router.navigate(['']);
         }
         else{
           localStorage.setItem("username", d.split(' ')[2]);
           localStorage.setItem("Typeofuser", this.selectedUser);
+          localStorage.setItem("Exchange", d.split(' ')[3]);
           this.router.navigate(['/dashboard']);
         }
       }

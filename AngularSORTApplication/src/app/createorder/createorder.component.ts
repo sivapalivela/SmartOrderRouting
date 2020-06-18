@@ -15,14 +15,12 @@ export class CreateorderComponent implements OnInit {
   Stocks : Array<string> = [];
   Exchanges : Array<string> = [];
 
-  //Data for Form
   selectedStock : string = "";
   selectedOrder : string = "";
   selectedExchange : string = "";
   numberOfShares : number;
   sharePrice : number;
   bufferRange : number;
-  //Data for Form
 
   constructor(private http: HttpClient) { }
 

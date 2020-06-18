@@ -10,4 +10,7 @@ public interface DarkPoolTransRepository extends JpaRepository<DarkPoolTransacti
 
     @Query(value = "select sum(transaction_amount) from dark_pool_transaction_book where time_stamp = ?1", nativeQuery = true)
     public Double getTransactionAmount(String d);
+
+    @Query(value = "select sum(number_of_shares) from dark_pool_transaction_book where time_stamp = ?1", nativeQuery = true)
+    public Double getTransactionShares(String d);
 }

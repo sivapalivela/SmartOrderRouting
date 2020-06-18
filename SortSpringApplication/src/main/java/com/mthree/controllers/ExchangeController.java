@@ -2,10 +2,7 @@ package com.mthree.controllers;
 
 import com.mthree.services.ExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,11 @@ public class ExchangeController {
     public double getTransValue(){
         return exchangeService.getTransValue();
     }
+
+    @CrossOrigin("http://localhost:4200")
+    @GetMapping("/overallTransValue/{exchange}")
+    public double overallTransValue(@PathVariable String exchange){
+        return exchangeService.overallTransValue(exchange);
+    }
+
 }

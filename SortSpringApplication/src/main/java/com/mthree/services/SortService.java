@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -113,12 +115,18 @@ public class SortService {
                 for (Map.Entry<Integer, Double> aa : list) {
                     temp.put(aa.getKey(), aa.getValue());
                 }
-                Map.Entry<Integer, Double> entry = temp.entrySet().iterator().next();
-                message = this.executeTrade(id, entry.getKey());
-                jo.put("text" , message);
-                return jo;
+                if(temp.size()>0) {
+                    Map.Entry<Integer, Double> entry = temp.entrySet().iterator().next();
+                    message = this.executeTrade(id, entry.getKey());
+                    jo.put("text", message);
+                    return jo;
+                }
+                else{
+                    jo.put("text", "No Sellers found right now !!! Please try again later !!!");
+                    return jo;
+                }
             } else {
-                message = "This is a Sell Order !!!";
+                message = "This is a Sell Order and you can only reject it !!!";
                 jo.put("text" , message);
                 return jo;
             }
@@ -148,10 +156,12 @@ public class SortService {
 
             String[] arr = buyOrderIdObject.getOrderStatus().split(" ");
             if(buyOrderRemaining <=0 ){
+                tb.setNumberOfShares(buyOrderIdObject.getNumberOfShares());
                 tb.setTypeOfTransaction("Executed " + arr[1]);
                 orderRepo.deleteByOrderId(buyOrderIdObject.getOrderId());
             }
             else{
+                tb.setNumberOfShares(buyOrderIdObject.getNumberOfShares() - sellOrderIdObject.getNumberOfShares());
                 String status = "Partial " + arr[1];
                 tb.setTypeOfTransaction(status);
                 orderRepo.updateOrderByOrderStatus(status, buyOrderIdObject.getOrderId());
@@ -164,8 +174,21 @@ public class SortService {
             tb.setSellerOrderId(sellOrderIdObject.getOrderId());
             tb.setBuyerSideExchange(buyOrderIdObject.getOrderExchangeId());
             tb.setSellerSideExchange(sellOrderIdObject.getOrderExchangeId());
-            tb.setTransactionAmount(buyOrderIdObject.getNumberOfShares()*buyOrderIdObject.getPrice());
-            tb.setNumberOfShares(buyOrderIdObject.getNumberOfShares());
+            //untested
+            double amountOfTransactions = buyOrderIdObject.getNumberOfShares()*buyOrderIdObject.getPrice();
+            Optional<Exchange> opt = exchangeRepo.findById(buyOrderIdObject.getOrderExchangeId());
+            Exchange tariffExchange = null;
+            if(opt.isPresent()){
+                tariffExchange = opt.get();
+            }
+            if(amountOfTransactions > 100000){
+                tb.setTransactionAmount( amountOfTransactions + (amountOfTransactions*(tariffExchange.getBulkFeeConstant()/100)));
+            }
+            else {
+                tb.setTransactionAmount( amountOfTransactions + (amountOfTransactions*(tariffExchange.getFeeConstant()/100)));
+            }
+            tariffExchange.setOverallTransactionValue(tariffExchange.getOverallTransactionValue() + tb.getTransactionAmount());
+            //untested
             tb.setTimeStamp(java.time.LocalDate.now());
             Optional<Exchange> buyExchange = exchangeRepo.findById(buyOrderIdObject.getOrderExchangeId());
             TradingCompanies tCompany = buyOrderIdObject.getCompany();
@@ -189,5 +212,35 @@ public class SortService {
         logger.info("Couldn't find Seller !!!");
         return "Couldn't find Seller !!!";
     }
+
+    public double getTodayMarketValue() {
+        LocalDate t=java.time.LocalDate.now();
+        String s=t.toString();
+        double n = 0;
+        double p = 0;
+        if(transactionRepo.findAll().size() > 0){
+            n += this.calculateMarketValue(transactionRepo.getTransactionShares(s));
+            p += this.calculateMarketValue(transactionRepo.getTransactionAmount(s));
+        }
+
+        if(darkTransRepo.findAll().size() > 0){
+            n += this.calculateMarketValue(darkTransRepo.getTransactionShares(s));
+            p += this.calculateMarketValue(darkTransRepo.getTransactionAmount(s));
+        }
+
+        if(n>0 && p>0){
+            double result = p/n;
+            return Math.round(result*100)/100;
+        }
+        return 0;
+    }
+
+    public double calculateMarketValue(Double data){
+        if(data != null){
+            return data;
+        }
+        return 0;
+    }
+
 
 }

@@ -55,4 +55,12 @@ public class ExchangeService {
         System.out.println(total);
         return total;
     }
+
+    public double overallTransValue(String exchange){
+        Optional<Exchange> getExchange = exchangeRepo.findById(exchange);
+        if(getExchange.isPresent()){
+            return getExchange.get().getOverallTransactionValue();
+        }
+        return 0;
+    }
 }

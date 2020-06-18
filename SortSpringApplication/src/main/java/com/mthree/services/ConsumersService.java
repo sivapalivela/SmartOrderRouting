@@ -44,7 +44,7 @@ public class ConsumersService {
         if(typeofUser.equals("Trader")){
             Trader trader = tradeRepo.findTraderById(username, password);
             if(trader!=null){
-                message = "Login Successful " + trader.getTraderId();
+                message = "Login Successful " + trader.getTraderId() + " " + trader.getExchange().getExchangeId();
                 jo.put("text",message);
                 return jo;
             }
@@ -56,7 +56,7 @@ public class ConsumersService {
         else{
             Consumers consumer = comsumersRepo.findUserById(username, password);
             if(consumer!=null){
-                message = "Login Successful " + consumer.getConsumersId();
+                message = "Login Successful " + consumer.getConsumersId() + " " + consumer.getExchangeOfConsumers().getExchangeId();
                 jo.put("text",message);
                 return jo;
             }

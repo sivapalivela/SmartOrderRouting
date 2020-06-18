@@ -19,9 +19,7 @@ public class Exchange {
     @OneToMany(mappedBy = "exchange", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<TransactionBook> transactionBook = new HashSet<>();
 
-    private double feeLadder;
-
-    private double todayTransactionValue;
+    private double overallTransactionValue;
 
     @OneToMany(mappedBy = "exchangeOfConsumers", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Consumers> usersOfExchange = new HashSet<>();
@@ -29,18 +27,24 @@ public class Exchange {
     @OneToMany(mappedBy = "exchange",fetch = FetchType.LAZY, cascade = CascadeType.ALL )
     private Set<Trader> tradersOfExchange = new HashSet<>();
 
+    private double feeConstant;
+
+    private double bulkFeeConstant;
+
 
     public Exchange() {
     }
 
-    public Exchange(String exchangeId, String exchangeName, Set<OrderStock> orderBook, Set<TransactionBook> transactionBook, double feeLadder, double todayTransactionValue, Set<Consumers> usersOfExchange) {
+    public Exchange(String exchangeId, String exchangeName, Set<OrderStock> orderBook, Set<TransactionBook> transactionBook, double overallTransactionValue, Set<Consumers> usersOfExchange, Set<Trader> tradersOfExchange, double feeConstant, double bulkFeeConstant) {
         this.exchangeId = exchangeId;
         this.exchangeName = exchangeName;
         this.orderBook = orderBook;
         this.transactionBook = transactionBook;
-        this.feeLadder = feeLadder;
-        this.todayTransactionValue = todayTransactionValue;
+        this.overallTransactionValue = overallTransactionValue;
         this.usersOfExchange = usersOfExchange;
+        this.tradersOfExchange = tradersOfExchange;
+        this.feeConstant = feeConstant;
+        this.bulkFeeConstant = bulkFeeConstant;
     }
 
     public String getExchangeId() {
@@ -75,20 +79,12 @@ public class Exchange {
         this.transactionBook = transactionBook;
     }
 
-    public double getFeeLadder() {
-        return feeLadder;
+    public double getOverallTransactionValue() {
+        return overallTransactionValue;
     }
 
-    public void setFeeLadder(double feeLadder) {
-        this.feeLadder = feeLadder;
-    }
-
-    public double getTodayTransactionValue() {
-        return todayTransactionValue;
-    }
-
-    public void setTodayTransactionValue(double todayTransactionValue) {
-        this.todayTransactionValue = todayTransactionValue;
+    public void setOverallTransactionValue(double overallTransactionValue) {
+        this.overallTransactionValue = overallTransactionValue;
     }
 
     public Set<Consumers> getUsersOfExchange() {
@@ -99,6 +95,30 @@ public class Exchange {
         this.usersOfExchange = usersOfExchange;
     }
 
+    public Set<Trader> getTradersOfExchange() {
+        return tradersOfExchange;
+    }
+
+    public void setTradersOfExchange(Set<Trader> tradersOfExchange) {
+        this.tradersOfExchange = tradersOfExchange;
+    }
+
+    public double getFeeConstant() {
+        return feeConstant;
+    }
+
+    public void setFeeConstant(double feeConstant) {
+        this.feeConstant = feeConstant;
+    }
+
+    public double getBulkFeeConstant() {
+        return bulkFeeConstant;
+    }
+
+    public void setBulkFeeConstant(double bulkFeeConstant) {
+        this.bulkFeeConstant = bulkFeeConstant;
+    }
+
     @Override
     public String toString() {
         return "Exchange{" +
@@ -106,9 +126,11 @@ public class Exchange {
                 ", exchangeName='" + exchangeName + '\'' +
                 ", orderBook=" + orderBook +
                 ", transactionBook=" + transactionBook +
-                ", feeLadder=" + feeLadder +
-                ", todayTransactionValue=" + todayTransactionValue +
+                ", overallTransactionValue=" + overallTransactionValue +
                 ", usersOfExchange=" + usersOfExchange +
+                ", tradersOfExchange=" + tradersOfExchange +
+                ", feeConstant=" + feeConstant +
+                ", bulkFeeConstant=" + bulkFeeConstant +
                 '}';
     }
 }

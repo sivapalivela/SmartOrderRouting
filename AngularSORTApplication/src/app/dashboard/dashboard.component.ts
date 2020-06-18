@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  marketvalue : string = '';
+  Exchange : string = '';
+  overallTransValue : string = '';
   transValue : string;
   consumerSwitchPoint : boolean;
   traderSwitchPoint : boolean;
@@ -20,6 +23,7 @@ export class DashboardComponent implements OnInit {
   constructor(public dialog: MatDialog, private http: HttpClient,private router : Router) { }
 
   ngOnInit(): void {
+    this.Exchange = localStorage.getItem('Exchange');
     this.username = localStorage.getItem('username');
     this.usertype = localStorage.getItem('Typeofuser');
     if(this.usertype == 'User'){
@@ -31,6 +35,8 @@ export class DashboardComponent implements OnInit {
       this.traderSwitchPoint = true;
     }
     this.getTodayTransValue();
+    this.getTodayMarketValue();
+    this.getOverallTransValue(this.Exchange);
   }
 
   createOrder() {
@@ -47,10 +53,26 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  getTodayMarketValue(){
+    this.http.get('http://localhost:8080/sort/todayMarketValue').subscribe(data => {
+      this.marketvalue = JSON.stringify(data);
+    });
+  }
+
+  getOverallTransValue(exchange){
+    this.http.get('http://localhost:8080/exchange/overallTransValue/' + exchange).subscribe(data => {
+      this.overallTransValue = JSON.stringify(data);
+    });
+  }
+
   logout(){
     localStorage.removeItem('username');
     localStorage.removeItem('Typeofuser');
     this.router.navigate(['']);
+  }
+
+  openprofile(){
+    this.router.navigate(['/profile']);
   }
 
 }
