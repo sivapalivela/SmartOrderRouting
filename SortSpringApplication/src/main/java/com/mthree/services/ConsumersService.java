@@ -11,6 +11,7 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,25 @@ public class ConsumersService {
 
     @Autowired
     private TraderRepository tradeRepo;
+
+    public List<String> getDetails(String username){
+        Optional<Consumers> consumer = comsumersRepo.findById(username);
+        List<String> result = new ArrayList<>();
+        if(consumer.isPresent()){
+            result.add(String.valueOf(6));
+            Consumers c = consumer.get();
+            result.add(c.getFirstName());
+            result.add(c.getLastName());
+            result.add(c.getEmail());
+            result.add(c.getLocation());
+            result.add(c.getMobileNumber());
+            result.add(String.valueOf(c.getTransactedAmountTillNow()));
+            return result;
+        }
+        result.add("0");
+        result.add("No Data about user");
+        return result;
+    }
 
     public String createConsumers(Consumers c, String excId){
         Optional<Exchange> exchangeObject = exchangeRepo.findById(excId);

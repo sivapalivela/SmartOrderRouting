@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   users : Array<string> = ["User", "Trader"];
   selectedUser : string;
 
-  constructor(private router: Router, private http : HttpClient) { }
+  constructor(private router: Router, private http : HttpClient, private data : DataService) { }
 
   ngOnInit(): void {
   }

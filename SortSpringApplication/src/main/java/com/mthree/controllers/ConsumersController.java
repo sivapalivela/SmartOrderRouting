@@ -7,6 +7,8 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/consumers")
 public class ConsumersController {
@@ -23,7 +25,13 @@ public class ConsumersController {
     @CrossOrigin("http://localhost:4200")
     @PostMapping("/login")
     public JSONObject loginUser(@RequestBody Login login){
-        System.out.println(login.getUsername() + " " + login.getPassword());
         return consumersService.login(login.getUsername(), login.getPassword(), login.getTypeofuser());
     }
+    @CrossOrigin("http://localhost:4200")
+    @GetMapping("/getdetails/{username}")
+    public List<String> getDetails(@PathVariable String username){
+        System.out.println(username);
+        return consumersService.getDetails(username);
+    }
+
 }

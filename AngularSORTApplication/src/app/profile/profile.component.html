@@ -1,14 +1,23 @@
-<div style="width: 100%;overflow: hidden;">
-    <div class="topheader">
-        <div class = "stylehead">
-            <h2 style="padding-top: 4%;margin-bottom: 1%;color: #3f51b5;">Profile !!!</h2>
-            <div style="border-bottom: 4px solid #3f51b5;width: 15%;margin-left: auto;margin-right: auto;"></div>
-        </div>
-        <div class="formdiv">
-            
+<div class="bgimage">
+    <div style="width: 100%;overflow: hidden;">
+        <div class="topheader">
+            <div class = "stylehead">
+                <h2 style="padding-top: 4%;margin-bottom: 1%;color: #3f51b5;">Profile !!!</h2>
+                <div class="borderstyling"></div>
+            </div>
+            <div class="formdiv">
+                <h3><span class = "designfield">Username</span> : <span class="fields">{{this.data.username}}</span></h3>
+                <h3><span class = "designfield">Email</span> : <span class="fields">{{this.data.email}}</span></h3>
+                <h3><span class = "designfield">First name</span> : <span class="fields">{{this.data.firstname}}</span></h3>
+                <h3><span class = "designfield">Last name</span> : <span class="fields">{{this.data.lastname}}</span></h3>
+                <h3><span class = "designfield">Mobile</span> : <span class="fields">{{this.data.mobile}}</span></h3>
+                <h3><span class = "designfield">Location</span> : <span class="fields">{{this.data.location}}</span></h3>
+                <h3><span class = "designfield">Home Exchange</span> : <span class="fields">{{this.data.homeExchange}}</span></h3>
+                <h3><span class = "designfield">Transaction Amount till Now</span> : <span class="fields">{{this.data.transactiontillnow}}</span></h3>
 
-            <div style="width: 28%;margin-left: auto;margin-right: auto;padding-bottom: 10%;">
-                <button mat-raised-button color="primary" (click) = "close()">Back to Login</button>
+                <div class="buttondiv">
+                    <button mat-raised-button color="primary" (click) = "close()">Back to Login</button>
+                </div>
             </div>
         </div>
     </div>

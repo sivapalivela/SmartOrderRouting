@@ -4245,3 +4245,105 @@ java.lang.NullPointerException: null
 2020-06-18 14:11:03.995  INFO 43319 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-06-18 14:11:03.996  INFO 43319 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-06-18 14:11:04.009  INFO 43319 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-06-18 14:40:10.229  INFO 43319 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 14:40:10.231  INFO 43319 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-18 14:40:10.231  INFO 43319 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-18 14:40:10.238  INFO 43319 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-18 14:40:17.629  INFO 45608 --- [main] com.mthree.SortSpringApplication         : Starting SortSpringApplication on CEO with PID 45608 (/home/shiva/SORT/SortSpringApplication/target/classes started by shiva in /home/shiva/SORT/SortSpringApplication)
+2020-06-18 14:40:17.632 DEBUG 45608 --- [main] com.mthree.SortSpringApplication         : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-06-18 14:40:17.633  INFO 45608 --- [main] com.mthree.SortSpringApplication         : No active profile set, falling back to default profiles: default
+2020-06-18 14:40:18.798  INFO 45608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-18 14:40:18.867  INFO 45608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63ms. Found 9 JPA repository interfaces.
+2020-06-18 14:40:19.440  INFO 45608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-18 14:40:19.447  INFO 45608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-18 14:40:19.447  INFO 45608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-18 14:40:19.524  INFO 45608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-18 14:40:19.524  INFO 45608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1846 ms
+2020-06-18 14:40:19.717  INFO 45608 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-18 14:40:19.756  INFO 45608 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-18 14:40:19.796  INFO 45608 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2020-06-18 14:40:19.912  INFO 45608 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-18 14:40:20.011  INFO 45608 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-18 14:40:20.107  INFO 45608 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-18 14:40:20.116  INFO 45608 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-06-18 14:40:20.795  INFO 45608 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-18 14:40:20.801  INFO 45608 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 14:40:21.233  WARN 45608 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-18 14:40:21.722  INFO 45608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-18 14:40:21.723  INFO 45608 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-18 14:40:21.866  INFO 45608 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-18 14:40:21.875  INFO 45608 --- [main] com.mthree.SortSpringApplication         : Started SortSpringApplication in 4.72 seconds (JVM running for 6.003)
+2020-06-18 14:40:45.981  INFO 45608 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-18 14:40:45.984  INFO 45608 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-18 14:40:46.008  INFO 45608 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2020-06-18 14:40:46.028  WARN 45608 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-06-18 14:40:58.750  INFO 45608 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 14:40:58.752  INFO 45608 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-18 14:40:58.753  INFO 45608 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-18 14:40:58.758  INFO 45608 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-18 14:41:04.402  INFO 45958 --- [main] com.mthree.SortSpringApplication         : Starting SortSpringApplication on CEO with PID 45958 (/home/shiva/SORT/SortSpringApplication/target/classes started by shiva in /home/shiva/SORT/SortSpringApplication)
+2020-06-18 14:41:04.405 DEBUG 45958 --- [main] com.mthree.SortSpringApplication         : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-06-18 14:41:04.406  INFO 45958 --- [main] com.mthree.SortSpringApplication         : No active profile set, falling back to default profiles: default
+2020-06-18 14:41:05.537  INFO 45958 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-18 14:41:05.621  INFO 45958 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78ms. Found 9 JPA repository interfaces.
+2020-06-18 14:41:06.183  INFO 45958 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-18 14:41:06.191  INFO 45958 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-18 14:41:06.192  INFO 45958 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-18 14:41:06.266  INFO 45958 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-18 14:41:06.267  INFO 45958 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1783 ms
+2020-06-18 14:41:06.505  INFO 45958 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-18 14:41:06.547  INFO 45958 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-18 14:41:06.587  INFO 45958 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2020-06-18 14:41:06.697  INFO 45958 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-18 14:41:06.788  INFO 45958 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-18 14:41:06.897  INFO 45958 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-18 14:41:06.906  INFO 45958 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-06-18 14:41:07.648  INFO 45958 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-18 14:41:07.654  INFO 45958 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 14:41:08.123  WARN 45958 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-18 14:41:08.597  INFO 45958 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-18 14:41:08.599  INFO 45958 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-18 14:41:08.804  INFO 45958 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-18 14:41:08.817  INFO 45958 --- [main] com.mthree.SortSpringApplication         : Started SortSpringApplication in 4.972 seconds (JVM running for 5.884)
+2020-06-18 14:41:16.812  INFO 45958 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-18 14:41:16.813  INFO 45958 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-18 14:41:16.828  INFO 45958 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-06-18 14:52:30.606  INFO 45958 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 14:52:30.608  INFO 45958 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-18 14:52:30.609  INFO 45958 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-18 14:52:30.614  INFO 45958 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-18 14:52:37.695  INFO 47322 --- [main] com.mthree.SortSpringApplication         : Starting SortSpringApplication on CEO with PID 47322 (/home/shiva/SORT/SortSpringApplication/target/classes started by shiva in /home/shiva/SORT/SortSpringApplication)
+2020-06-18 14:52:37.699 DEBUG 47322 --- [main] com.mthree.SortSpringApplication         : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-06-18 14:52:37.700  INFO 47322 --- [main] com.mthree.SortSpringApplication         : No active profile set, falling back to default profiles: default
+2020-06-18 14:52:39.646  INFO 47322 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-18 14:52:39.742  INFO 47322 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89ms. Found 9 JPA repository interfaces.
+2020-06-18 14:52:40.440  INFO 47322 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-18 14:52:40.448  INFO 47322 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-18 14:52:40.448  INFO 47322 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-06-18 14:52:40.532  INFO 47322 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-18 14:52:40.532  INFO 47322 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2758 ms
+2020-06-18 14:52:40.762  INFO 47322 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-18 14:52:40.805  INFO 47322 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-18 14:52:40.853  INFO 47322 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2020-06-18 14:52:40.976  INFO 47322 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-18 14:52:41.072  INFO 47322 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-18 14:52:41.211  INFO 47322 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-18 14:52:41.220  INFO 47322 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-06-18 14:52:41.959  INFO 47322 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-18 14:52:41.965  INFO 47322 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 14:52:42.431  WARN 47322 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-18 14:52:42.956  INFO 47322 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-18 14:52:42.959  INFO 47322 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-18 14:52:43.145  INFO 47322 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-18 14:52:43.155  INFO 47322 --- [main] com.mthree.SortSpringApplication         : Started SortSpringApplication in 6.31 seconds (JVM running for 7.67)
+2020-06-18 14:53:59.140  INFO 47322 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-18 14:53:59.140  INFO 47322 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-18 14:53:59.155  INFO 47322 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-06-18 16:27:01.174  INFO 47322 --- [http-nio-8080-exec-3] com.mthree.controllers.OrderController   : A Create Order Request has been received for the company :ADE
+2020-06-18 16:27:01.569  INFO 47322 --- [http-nio-8080-exec-3] com.mthree.controllers.OrderController   : Order has been added to the order Stock
+2020-06-18 16:31:53.765  INFO 47322 --- [http-nio-8080-exec-9] com.mthree.controllers.OrderController   : A Create Order Request has been received for the company :DLF
+2020-06-18 16:31:53.951  INFO 47322 --- [http-nio-8080-exec-9] com.mthree.controllers.OrderController   : Order has been added to the order Stock
+2020-06-18 16:32:26.039  INFO 47322 --- [http-nio-8080-exec-1] com.mthree.controllers.OrderController   : A Create Order Request has been received for the company :AAPL
+2020-06-18 16:32:26.291  INFO 47322 --- [http-nio-8080-exec-1] com.mthree.controllers.OrderController   : Order has been added to the order Stock
+2020-06-18 16:32:45.040  INFO 47322 --- [http-nio-8080-exec-3] com.mthree.controllers.OrderController   : A Create Order Request has been received for the company :AAPL
+2020-06-18 16:32:45.163  INFO 47322 --- [http-nio-8080-exec-3] com.mthree.controllers.OrderController   : Order has been added to the order Stock

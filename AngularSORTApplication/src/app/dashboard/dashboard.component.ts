@@ -4,6 +4,7 @@ import { CreateorderComponent } from '../createorder/createorder.component';
 import { ViewtransactionsComponent } from '../viewtransactions/viewtransactions.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
   usertype : string = '';
   username : string = "Unidentified User"
 
-  constructor(public dialog: MatDialog, private http: HttpClient,private router : Router) { }
+  constructor(public dialog: MatDialog, private http: HttpClient,private router : Router, private data : DataService) { }
 
   ngOnInit(): void {
     this.Exchange = localStorage.getItem('Exchange');
@@ -34,6 +35,9 @@ export class DashboardComponent implements OnInit {
       this.consumerSwitchPoint = false;
       this.traderSwitchPoint = true;
     }
+    this.data.username = this.username;
+    this.data.homeExchange = this.Exchange;
+    this.data.getDetails(this.username);
     this.getTodayTransValue();
     this.getTodayMarketValue();
     this.getOverallTransValue(this.Exchange);
