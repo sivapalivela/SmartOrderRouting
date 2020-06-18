@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-viewtransactions',
@@ -8,11 +9,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ViewtransactionsComponent implements OnInit {
 
-  consumerId : string = "Pbskumar";
+  consumerId : string = this.data.username;
 
   transactions : Array<string> = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private data : DataService) { }
 
   ngOnInit(): void {
     this.getTransactions(this.consumerId);

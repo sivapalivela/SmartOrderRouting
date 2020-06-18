@@ -40,6 +40,7 @@ public class SortService {
     @Autowired
     private DarkPoolTransRepository darkTransRepo;
 
+
     Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     public JSONObject processTrade(int id, int range) {
@@ -189,6 +190,11 @@ public class SortService {
             }
             tariffExchange.setOverallTransactionValue(tariffExchange.getOverallTransactionValue() + tb.getTransactionAmount());
             //untested
+            Optional<Consumers> cObject = consumerRepo.findById(buyOrderIdObject.getConsumers().getConsumersId());
+            if(cObject.isPresent()){
+                Consumers c = cObject.get();
+                c.setTransactedAmountTillNow((long)(c.getTransactedAmountTillNow() + tb.getTransactionAmount()));
+            }
             tb.setTimeStamp(java.time.LocalDate.now());
             Optional<Exchange> buyExchange = exchangeRepo.findById(buyOrderIdObject.getOrderExchangeId());
             TradingCompanies tCompany = buyOrderIdObject.getCompany();
