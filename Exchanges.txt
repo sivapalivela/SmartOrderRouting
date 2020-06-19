@@ -1,0 +1,17 @@
+NYSE NewYorkStockExchange 2 5 753186
+NASDAQ Nasdaq 2 4 4568912
+JPX JapanExchangeGroup 1 2 7526541
+LSE LondonStockExchange 5 6 462862
+SSE ShanghaiStockExchange 3 5 786152
+SEHK HongKongStockExchange 4 8 312542
+KRX KoreanExchange 2 3 965421
+SGX SingaporeExchange 6 9 965451
+BSE BombayStockExchange 4 5 985678
+CSE CalcuttaStockExchange 7 8 378456
+MSE MetropolitanStockExchange 2 5 567435
+NSE NationalStockExchange 5 9 654787
+ISE InterConnectedStockExchange 2 7 987868
+USE UnitedStockExchange 4 7 375643
+MPS MadrasPradeshstock 2 7 387674
+ASEL AhmedabadStockExchange 4 10 876953
+BGSE BangaloreStockExchange 5 10 563892
