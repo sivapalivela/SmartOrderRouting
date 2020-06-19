@@ -41,12 +41,12 @@ public class SortService {
     private DarkPoolTransRepository darkTransRepo;
 
 
-    Logger logger = LoggerFactory.getLogger(OrderController.class);
+    Logger logger = LoggerFactory.getLogger(SortService.class);
 
     public JSONObject processTrade(int id, int range) {
         Optional<OrderStock> o = orderRepo.findById(id);
         JSONObject jo = new JSONObject();
-        String message = "Failed to process !!!";
+        String message = "Failed to process !";
         if (o.isPresent()) {
             OrderStock buyOrderObject = o.get();
             List<Exchange> exchangesList = exchangeRepo.findAll();
@@ -65,13 +65,14 @@ public class SortService {
                                 DarkPoolTransactionBook darkTransaction = new DarkPoolTransactionBook();
                                 String genId = buyOrderObject.getOrderId() + "BDarkS" + darkOrder.getOrderId();
                                 darkTransaction.setTransId(genId);
-                                logger.info("Transaction Successful !!!" + "The transaction id id"+ genId);
+                                logger.trace("Transaction Successful !!!" + "The transaction id is"+ genId);
                                 darkTransaction.setBuyerOrderId(buyOrderObject.getOrderId());
                                 darkTransaction.setSellerOrderId(darkOrder.getOrderId());
                                 darkTransaction.setBuyerSideExchange(darkOrder.getOrderExchangeId());
                                 darkTransaction.setSellerSideExchange(darkOrder.getOrderExchangeId());
                                 darkTransaction.setTransactionAmount(buyOrderObject.getNumberOfShares()*buyOrderObject.getPrice());
                                 darkTransaction.setNumberOfShares(buyOrderObject.getNumberOfShares());
+                                darkTransaction.setTypeOfTransaction("Executed 0");
                                 darkTransaction.setTimeStamp(java.time.LocalDate.now());
                                 Consumers c = buyOrderObject.getConsumers();
                                 Optional<Consumers> consumer_dark = consumerRepo.findById(c.getConsumersId());
@@ -87,8 +88,9 @@ public class SortService {
                                 darkTransRepo.save(darkTransaction);
                                 orderRepo.deleteByOrderId(buyOrderObject.getOrderId());
                                 darkOrderRepo.deleteByOrderId(darkOrder.getOrderId());
-                                message = "Transaction successful !!!";
+                                message = "Transaction successful !";
                                 jo.put("text",message);
+                                logger.trace("message");
                                 return jo;
                             }
                         }
@@ -123,12 +125,14 @@ public class SortService {
                     return jo;
                 }
                 else{
-                    jo.put("text", "No Sellers found right now !!! Please try again later !!!");
+                    jo.put("text", "No Sellers found right now !!! Please try again later !");
+                    logger.trace("No Sellers found right now !!! Please try again later !!!");
                     return jo;
                 }
             } else {
-                message = "This is a Sell Order and you can only reject it !!!";
+                message = "This is a Sell Order and you can only reject it !";
                 jo.put("text" , message);
+                logger.trace(message);
                 return jo;
             }
         }
@@ -175,7 +179,6 @@ public class SortService {
             tb.setSellerOrderId(sellOrderIdObject.getOrderId());
             tb.setBuyerSideExchange(buyOrderIdObject.getOrderExchangeId());
             tb.setSellerSideExchange(sellOrderIdObject.getOrderExchangeId());
-            //untested
             double amountOfTransactions = buyOrderIdObject.getNumberOfShares()*buyOrderIdObject.getPrice();
             Optional<Exchange> opt = exchangeRepo.findById(buyOrderIdObject.getOrderExchangeId());
             Exchange tariffExchange = null;
@@ -189,7 +192,6 @@ public class SortService {
                 tb.setTransactionAmount( amountOfTransactions + (amountOfTransactions*(tariffExchange.getFeeConstant()/100)));
             }
             tariffExchange.setOverallTransactionValue(tariffExchange.getOverallTransactionValue() + tb.getTransactionAmount());
-            //untested
             Optional<Consumers> cObject = consumerRepo.findById(buyOrderIdObject.getConsumers().getConsumersId());
             if(cObject.isPresent()){
                 Consumers c = cObject.get();
@@ -207,16 +209,16 @@ public class SortService {
                 tb.setCompany_name(tradeCompany.get());
             }
             else{
-                logger.info("Transaction creation failed !!!");
+                logger.trace("Transaction creation failed !!!");
                 return "Transaction creation failed !!!";
             }
             transactionRepo.save(tb);
-            logger.info("Transaction Successful !!!" + "The transaction id id"+ transId);
-            return "Transaction Successful !!!";
+            logger.trace("Transaction Successful !!!" + "The transaction id id"+ transId);
+            return "Transaction Successful !";
 
         }
-        logger.info("Couldn't find Seller !!!");
-        return "Couldn't find Seller !!!";
+        logger.trace("Couldn't find Seller !!!");
+        return "Couldn't find Seller !";
     }
 
     public double getTodayMarketValue() {

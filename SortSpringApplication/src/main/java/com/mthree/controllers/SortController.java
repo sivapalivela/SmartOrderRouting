@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/sort")
 public class SortController {
     @Autowired
@@ -25,18 +26,17 @@ public class SortController {
     @Autowired
     private DarkPoolTransRepository darkTransRepo;
 
-    Logger logger = LoggerFactory.getLogger(OrderController.class);
+    Logger logger = LoggerFactory.getLogger(SortController.class);
 
-    @CrossOrigin("http://localhost:4200")
     @PostMapping("/processtrade/{id}/{range}")
     public JSONObject processTrade(@PathVariable() String id, @PathVariable String range){
         logger.info("A Process Trade request is received with in the range of" + range);
         return sortService.processTrade(Integer.parseInt(id), Integer.parseInt(range));
     }
 
-    @CrossOrigin("http://localhost:4200")
     @GetMapping("/todayMarketValue")
     public double getTodayMarketValue() {
+        logger.trace("A request has been received to get the total market value");
         return sortService.getTodayMarketValue();
     }
 

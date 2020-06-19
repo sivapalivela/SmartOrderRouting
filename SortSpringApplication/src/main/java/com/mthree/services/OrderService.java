@@ -31,13 +31,13 @@ public class OrderService {
     @Autowired
     private ConsumersRepository consumerRepo;
 
-    Logger logger = LoggerFactory.getLogger(OrderController.class);
+    Logger logger = LoggerFactory.getLogger(OrderService.class);
 
     public String createOrder(OrderStock o, String companyId, String username){
         Optional<Exchange> exchangeObject = exchangeRepo.findById(o.getOrderExchangeId());
         Optional<TradingCompanies> companyObject = tradeComRepo.findById(companyId);
         Optional<Consumers> userObject = consumerRepo.findById(username);
-        String message = "Failed to add stock !!!";
+        String message = "Failed to create order !";
         if(exchangeObject.isPresent() && companyObject.isPresent() && userObject.isPresent()){
             TradingCompanies tcObject = companyObject.get();
             Exchange exObject = exchangeObject.get();
@@ -48,11 +48,9 @@ public class OrderService {
             orderRepo.save(o);
             exObject.getOrderBook().add(o);
             exchangeRepo.save(exObject);
-            message = "Successfully added stock !!!";
-            logger.info("Order has been added to the order Stock");
+            message = "Successfully created order !";
         }
-        if(message.equals("Failed to add stock"))
-            logger.info("Failed to add stock");
+        logger.trace(message);
         return message;
     }
 
@@ -67,21 +65,23 @@ public class OrderService {
             String data = o.getOrderId() + "-" + o.getNumberOfShares() + "-" + o.getTypeOfOrder() + "-" + o.getPrice() + "-" + arr[0] + "-" + trCompany.getCompanyId() + "-" + c.getConsumersId() + "-" + arr[1];
             orders.add(data);
         }
+        logger.trace("All the avaliable orders are returned");
         return orders;
     }
 
     public JSONObject cancelOrder(int id){
-        String message = "Failed to Delete !!!";
+        String message = "Failed to Delete !";
         JSONObject jo = new JSONObject();
         Optional<OrderStock> order = orderRepo.findById(id);
         if(order.isPresent()){
             orderRepo.deleteById(id);
             logger.info("Order Id " + id + " is deleted");
-            message = "Successfully Deleted !!!";
+            message = "Successfully Deleted !";
             jo.put("text" , message);
             return jo;
         }
         jo.put("text" , message);
+        logger.trace("An Order with order id" + id+"has been successfully deleted");
         return jo;
     }
 

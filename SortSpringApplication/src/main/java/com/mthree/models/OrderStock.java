@@ -143,7 +143,7 @@ public class OrderStock {
                 ", timeStamp=" + timeStamp +
                 ", exchange=" + exchange +
                 ", orderStatus='" + orderStatus + '\'' +
-//                ", user=" + user +
+                ", consumers=" + consumers +
                 '}';
     }
 }

@@ -9,6 +9,10 @@
 }
 
 .bgimage{
-  height: 100%;
   background-image: url(../../assets/stock.jpg);
+  background-repeat: repeat-y;
+}
+
+.profile {
+  font-weight: bolder;
 }

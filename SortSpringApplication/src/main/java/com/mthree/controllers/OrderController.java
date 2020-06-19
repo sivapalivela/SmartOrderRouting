@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/orders")
 public class OrderController {
 
@@ -19,22 +20,21 @@ public class OrderController {
     private OrderService orderService;
 
     Logger logger = LoggerFactory.getLogger(OrderController.class);
-    @CrossOrigin("http://localhost:4200")
+
     @PostMapping(value = "/createOrder/{username}/{companyId}")
     public String CreateOrder(@RequestBody OrderStock o, @PathVariable String companyId, @PathVariable String username){
-        logger.info("A Create Order Request has been received for the company :" + companyId);
         return orderService.createOrder(o,companyId,username);
     }
 
-    @CrossOrigin("http://localhost:4200")
     @GetMapping("/getorders")
     public List<String> getOrders(){
+        logger.trace("A request has been called to get the list of orders which are avaliable in the orderbook");
         return orderService.getOrders();
     }
 
-    @CrossOrigin("http://localhost:4200")
     @PostMapping(value = "deleteOrder/{orderid}")
     public JSONObject deleteOrder(@PathVariable String orderid){
+        logger.trace("A request has been received to delete the order with order Id : "+ orderid);
         return orderService.cancelOrder(Integer.parseInt(orderid));
     }
 

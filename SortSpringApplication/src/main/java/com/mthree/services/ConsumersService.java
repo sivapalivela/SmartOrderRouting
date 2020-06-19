@@ -8,6 +8,8 @@ import com.mthree.repositories.ConsumersRepository;
 import com.mthree.repositories.ExchangeRepository;
 import com.mthree.repositories.TraderRepository;
 import net.minidev.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.Optional;
 
 @Service
 public class ConsumersService {
+
+    Logger logger = LoggerFactory.getLogger(ConsumersService.class);
 
     @Autowired
     private ConsumersRepository comsumersRepo;
@@ -53,8 +57,9 @@ public class ConsumersService {
             Exchange exObject = exchangeObject.get();
             c.setExchangeOfConsumers(exObject);
             comsumersRepo.save(c);
-            message = "Successfully added user " + c.getConsumersId() + " !!!";
+            message = "Successfully added user " + c.getConsumersId() + " !";
         }
+        logger.trace(message);
         return message;
     }
 
@@ -65,11 +70,13 @@ public class ConsumersService {
             Trader trader = tradeRepo.findTraderById(username, password);
             if(trader!=null){
                 message = "Login Successful " + trader.getTraderId() + " " + trader.getExchange().getExchangeId();
+                logger.trace(message);
                 jo.put("text",message);
                 return jo;
             }
             else{
                 jo.put("text","Trader doesn't exist with that details");
+                logger.trace("Trader doesn't exist with that details");
                 return jo;
             }
         }
@@ -78,10 +85,12 @@ public class ConsumersService {
             if(consumer!=null){
                 message = "Login Successful " + consumer.getConsumersId() + " " + consumer.getExchangeOfConsumers().getExchangeId();
                 jo.put("text",message);
+                logger.trace(message);
                 return jo;
             }
             else{
                 jo.put("text","Consumer doesn't exist with that details");
+                logger.trace("Consumer doesn't exist with that details");
                 return jo;
             }
         }

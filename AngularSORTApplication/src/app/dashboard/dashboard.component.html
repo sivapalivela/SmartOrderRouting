@@ -2,25 +2,24 @@
 <mat-toolbar color = "primary">
     <span style="padding-left: 4%;"></span>
     Smart Order Routing
-
     <span class="flex-spacer"></span>
     <p style="margin-bottom: 0%;color: gold;">Today's Market Value : {{marketvalue}}</p>
-    <span style="margin-right: 2%;"></span>
+    <span style="margin-right: 1%;"></span>
     <p style="margin-bottom: 0%;color: gold;">Overall Transactions Value of {{Exchange}} : {{overallTransValue}}</p>
-    <span style="margin-right: 2%;"></span>
-    <p style="margin-bottom: 0%;color: gold;">Today's Transaction Value : {{transValue}}</p>
+    <span style="margin-right: 1%;"></span>
+    <span style="margin-bottom: 0%;color: gold;">Today's Transaction Value : {{transValue}}</span>
     <span style="margin-right: 1%;"></span>
     <button mat-raised-button color = "accent" (click) = "createOrder()" *ngIf = "consumerSwitchPoint">Create Order</button>
     <span style="padding-right:1%;"></span>
     <button mat-raised-button color = "accent" (click) = "viewTransactions()" *ngIf = "consumerSwitchPoint">View Transactions</button>
     <span style="padding-right:1%;"></span>
 
-    <button mat-button [matMenuTriggerFor]="menu">{{username}}</button>
+    <button mat-button [matMenuTriggerFor]="menu"> <span class="entypo-down-dir" style = "font-weight : bold;font-size:larger;"></span> &nbsp;{{username}}</button>
     <mat-menu #menu="matMenu">
-    <button mat-menu-item (click) = "openprofile()"><span class="entypo-user"></span>Profile</button>
-    <button mat-menu-item (click) = "logout()"><span class="entypo-right"></span>Logout</button>
+    <button mat-menu-item (click) = "openprofile()"><span class="entypo-user" style="color: crimson;font-weight: bolder;"></span> <span class = "profile"> Profile</span></button>
+    <button mat-menu-item (click) = "logout()"><span class="entypo-right" style="color: crimson;font-weight: bolder;"></span> <span class = "profile"> Logout</span></button>
     </mat-menu>
-    <span style="padding-left: 4%;"></span>
+    <span style="padding-left: 3%;"></span>
 </mat-toolbar>
 <app-consumer *ngIf = "consumerSwitchPoint"></app-consumer>
 <app-trader *ngIf = "traderSwitchPoint"></app-trader>

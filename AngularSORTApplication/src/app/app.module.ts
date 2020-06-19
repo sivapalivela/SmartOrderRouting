@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ViewtransactionsComponent } from './viewtransactions/viewtransactions.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ProfileComponent } from './profile/profile.component';
     CreateorderComponent,
     ViewtransactionsComponent
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
