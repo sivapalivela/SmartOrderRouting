@@ -2009,3 +2009,171 @@ java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '22' for key 
 2020-06-19 12:48:22.138 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is654787.0
 2020-06-19 12:48:22.145 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
 2020-06-19 12:48:22.151 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:15:42.247 TRACE 32682 --- [http-nio-8080-exec-2] c.m.controllers.ConsumersController      : UserAkhiltrying to be logging in
+2020-06-19 15:15:42.260 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.ConsumersService     : Login Successful Akhil NASDAQ
+2020-06-19 15:15:43.903 TRACE 32682 --- [http-nio-8080-exec-9] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:15:43.911 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:15:43.912 TRACE 32682 --- [http-nio-8080-exec-3] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:15:43.914 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:15:43.918 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:15:43.921 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:15:43.925 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:15:53.705 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.controllers.OrderController   : A request has been received to delete the order with order Id : 31
+2020-06-19 15:15:53.905  INFO 32682 --- [http-nio-8080-exec-8] com.mthree.services.OrderService         : Order Id 31 is deleted
+2020-06-19 15:15:59.307 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:15:59.307 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:15:59.310 TRACE 32682 --- [http-nio-8080-exec-10] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:15:59.316 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:15:59.320 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:15:59.327 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:15:59.348 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:16:09.317 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.controllers.OrderController   : A request has been received to delete the order with order Id : 30
+2020-06-19 15:16:09.434  INFO 32682 --- [http-nio-8080-exec-4] com.mthree.services.OrderService         : Order Id 30 is deleted
+2020-06-19 15:16:15.957 TRACE 32682 --- [http-nio-8080-exec-7] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:16:15.959 TRACE 32682 --- [http-nio-8080-exec-8] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:16:15.960 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:16:15.964 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:16:15.967 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:16:15.983 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:16:15.986 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:18:20.137 TRACE 32682 --- [http-nio-8080-exec-6] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:18:20.139 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:18:20.142 TRACE 32682 --- [http-nio-8080-exec-7] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:18:20.151 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:18:20.155 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:18:20.159 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:18:20.159 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:18:23.923 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:18:23.924 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:18:23.944 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:18:23.956 TRACE 32682 --- [http-nio-8080-exec-2] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:18:23.968 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:18:23.979 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:18:23.982 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:18:26.005 TRACE 32682 --- [http-nio-8080-exec-7] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:18:26.007 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:18:26.016 TRACE 32682 --- [http-nio-8080-exec-6] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:18:26.023 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:18:26.024 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:18:26.036 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:18:26.039 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:18:28.708 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:18:28.708 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:18:28.710 TRACE 32682 --- [http-nio-8080-exec-2] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:18:28.714 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:18:28.728 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:18:28.747 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:18:28.750 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:18:47.424 TRACE 32682 --- [http-nio-8080-exec-4] c.m.controllers.ConsumersController      : UserShivatrying to be logging in
+2020-06-19 15:18:47.429 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.services.ConsumersService     : Login Successful Shiva NASDAQ
+2020-06-19 15:18:49.091 TRACE 32682 --- [http-nio-8080-exec-7] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:18:49.101 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:18:49.104 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 15:18:49.105 TRACE 32682 --- [http-nio-8080-exec-8] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:18:49.108 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:18:49.134 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:18:49.145 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:18:59.609 TRACE 32682 --- [http-nio-8080-exec-5] c.m.c.TradingCompaniesController         : A request has been called to get the list of all companies
+2020-06-19 15:18:59.611 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request has been sent to get the list of exchanges
+2020-06-19 15:18:59.613 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : All the avaliable exchanges are sent to the UI
+2020-06-19 15:18:59.613 TRACE 32682 --- [http-nio-8080-exec-5] c.m.services.TradingCompaniesService     : All the available list of companies has been returned to the user interface
+2020-06-19 15:19:17.318 TRACE 32682 --- [http-nio-8080-exec-10] c.m.c.TradingCompaniesController         : A request has been called to get the list of all companies
+2020-06-19 15:19:17.324 TRACE 32682 --- [http-nio-8080-exec-10] c.m.services.TradingCompaniesService     : All the available list of companies has been returned to the user interface
+2020-06-19 15:19:17.325 TRACE 32682 --- [http-nio-8080-exec-3] c.mthree.controllers.ExchangeController  : A request has been sent to get the list of exchanges
+2020-06-19 15:19:17.330 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.ExchangeService      : All the avaliable exchanges are sent to the UI
+2020-06-19 15:19:39.941 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.OrderService         : Successfully created order !
+2020-06-19 15:19:48.235 TRACE 32682 --- [http-nio-8080-exec-2] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 15:19:48.238 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 15:19:48.253 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 15:19:48.257 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 15:19:48.259 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 15:19:48.260 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 15:19:48.253 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 16:25:22.370 TRACE 32682 --- [http-nio-8080-exec-8] c.m.controllers.TransactionsController   : A request has been received to get the list of transactions of the user with idShiva
+2020-06-19 16:25:22.382 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.TransactionService   : All the available transactions are sent to the userinterface
+2020-06-19 16:25:31.386 TRACE 32682 --- [http-nio-8080-exec-9] c.m.c.TradingCompaniesController         : A request has been called to get the list of all companies
+2020-06-19 16:25:31.389 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request has been sent to get the list of exchanges
+2020-06-19 16:25:31.391 TRACE 32682 --- [http-nio-8080-exec-9] c.m.services.TradingCompaniesService     : All the available list of companies has been returned to the user interface
+2020-06-19 16:25:31.394 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : All the avaliable exchanges are sent to the UI
+2020-06-19 17:55:10.642 TRACE 32682 --- [http-nio-8080-exec-3] c.m.controllers.ConsumersController      : UserPbskumartrying to be logging in
+2020-06-19 17:55:10.683 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.ConsumersService     : Consumer doesn't exist with that details
+2020-06-19 17:55:21.039 TRACE 32682 --- [http-nio-8080-exec-6] c.mthree.controllers.ExchangeController  : A request has been sent to get the list of exchanges
+2020-06-19 17:55:21.042 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.services.ExchangeService      : All the avaliable exchanges are sent to the UI
+2020-06-19 17:55:51.384 TRACE 32682 --- [http-nio-8080-exec-4] c.m.controllers.ConsumersController      : A new customer creation request has been received
+2020-06-19 17:55:51.860 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.services.ConsumersService     : Successfully added user rajesh !
+2020-06-19 17:56:14.101 TRACE 32682 --- [http-nio-8080-exec-8] c.m.controllers.ConsumersController      : UserAashishtrying to be logging in
+2020-06-19 17:56:14.103 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.ConsumersService     : Login Successful Aashish BSE
+2020-06-19 17:56:19.030 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 17:56:19.043 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 17:56:19.043 TRACE 32682 --- [http-nio-8080-exec-2] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 17:56:19.052 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 17:56:19.054 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 17:56:19.062 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is1110948.25
+2020-06-19 17:56:19.066 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 17:56:56.205 TRACE 32682 --- [http-nio-8080-exec-6] c.m.c.TradingCompaniesController         : A request has been called to get the list of all companies
+2020-06-19 17:56:56.207 TRACE 32682 --- [http-nio-8080-exec-3] c.mthree.controllers.ExchangeController  : A request has been sent to get the list of exchanges
+2020-06-19 17:56:56.214 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.ExchangeService      : All the avaliable exchanges are sent to the UI
+2020-06-19 17:56:56.220 TRACE 32682 --- [http-nio-8080-exec-6] c.m.services.TradingCompaniesService     : All the available list of companies has been returned to the user interface
+2020-06-19 17:57:24.373 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.OrderService         : Successfully created order !
+2020-06-19 17:57:30.472 TRACE 32682 --- [http-nio-8080-exec-1] c.m.controllers.TransactionsController   : A request has been received to get the list of transactions of the user with idAashish
+2020-06-19 17:57:30.479 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.TransactionService   : All the available transactions are sent to the userinterface
+2020-06-19 17:58:28.322 TRACE 32682 --- [http-nio-8080-exec-3] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 17:58:28.323 TRACE 32682 --- [http-nio-8080-exec-5] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 17:58:28.324 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 17:58:28.325 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 17:58:28.330 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is1110948.25
+2020-06-19 17:58:28.332 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 17:58:28.348 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 17:58:35.079 TRACE 32682 --- [http-nio-8080-exec-8] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 17:58:35.084 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 17:58:35.086 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 17:58:35.088 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 17:58:35.090 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 17:58:35.094 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is1110948.25
+2020-06-19 17:58:35.096 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 17:58:48.114 TRACE 32682 --- [http-nio-8080-exec-7] c.m.controllers.ConsumersController      : UserAashishtrying to be logging in
+2020-06-19 17:58:48.115 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.ConsumersService     : Login Successful Aashish BSE
+2020-06-19 17:58:49.822 TRACE 32682 --- [http-nio-8080-exec-5] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 17:58:49.824 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 17:58:49.826 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is1110948.25
+2020-06-19 17:58:49.827 TRACE 32682 --- [http-nio-8080-exec-3] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 17:58:49.827 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 17:58:49.829 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 17:58:49.838 TRACE 32682 --- [http-nio-8080-exec-3] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 17:59:46.560 TRACE 32682 --- [http-nio-8080-exec-1] c.m.controllers.ConsumersController      : UserAkhiltrying to be logging in
+2020-06-19 17:59:46.564 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ConsumersService     : Login Successful Akhil NASDAQ
+2020-06-19 17:59:48.232 TRACE 32682 --- [http-nio-8080-exec-2] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 17:59:48.233 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 17:59:48.235 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 17:59:48.236 TRACE 32682 --- [http-nio-8080-exec-7] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 17:59:48.251 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 17:59:48.251 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 17:59:48.264 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 18:00:07.849 TRACE 32682 --- [http-nio-8080-exec-4] com.mthree.controllers.OrderController   : A request has been received to delete the order with order Id : 23
+2020-06-19 18:00:07.972  INFO 32682 --- [http-nio-8080-exec-4] com.mthree.services.OrderService         : Order Id 23 is deleted
+2020-06-19 18:00:12.248 TRACE 32682 --- [http-nio-8080-exec-6] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 18:00:12.249 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 18:00:12.258 TRACE 32682 --- [http-nio-8080-exec-8] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 18:00:12.262 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 18:00:12.276 TRACE 32682 --- [http-nio-8080-exec-6] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :153719.31
+2020-06-19 18:00:12.284 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 18:00:12.296 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 18:00:22.528  INFO 32682 --- [http-nio-8080-exec-9] com.mthree.controllers.SortController    : A Process Trade request is received with in the range of12
+2020-06-19 18:00:22.533 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.SortService          : This is a Sell Order and you can only reject it !
+2020-06-19 18:00:43.684  INFO 32682 --- [http-nio-8080-exec-5] com.mthree.controllers.SortController    : A Process Trade request is received with in the range of20
+2020-06-19 18:00:44.613 TRACE 32682 --- [http-nio-8080-exec-5] com.mthree.services.SortService          : Transaction Successful !!!The transaction id id37BtransS32
+2020-06-19 18:01:03.502 TRACE 32682 --- [http-nio-8080-exec-8] c.m.controllers.ConsumersController      : Usershivatrying to be logging in
+2020-06-19 18:01:03.504 TRACE 32682 --- [http-nio-8080-exec-8] com.mthree.services.ConsumersService     : Login Successful Shiva NASDAQ
+2020-06-19 18:01:05.103 TRACE 32682 --- [http-nio-8080-exec-7] com.mthree.controllers.SortController    : A request has been received to get the total market value
+2020-06-19 18:01:05.104 TRACE 32682 --- [http-nio-8080-exec-1] c.mthree.controllers.ExchangeController  : A request to get todays transaction value has been called
+2020-06-19 18:01:05.107 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.controllers.OrderController   : A request has been called to get the list of orders which are avaliable in the orderbook
+2020-06-19 18:01:05.107 TRACE 32682 --- [http-nio-8080-exec-9] c.mthree.controllers.ExchangeController  : A request to get over all transaction value has been called
+2020-06-19 18:01:05.112 TRACE 32682 --- [http-nio-8080-exec-9] com.mthree.services.ExchangeService      : Overall transaction value of an exchange is sent back to the user and it is4568912.0
+2020-06-19 18:01:05.113 TRACE 32682 --- [http-nio-8080-exec-10] com.mthree.services.OrderService         : All the avaliable orders are returned
+2020-06-19 18:01:05.115 TRACE 32682 --- [http-nio-8080-exec-1] com.mthree.services.ExchangeService      : The total transaction value has been calculate and displayed which is :177119.31
+2020-06-19 18:01:06.582 TRACE 32682 --- [http-nio-8080-exec-2] c.m.controllers.TransactionsController   : A request has been received to get the list of transactions of the user with idShiva
+2020-06-19 18:01:06.591 TRACE 32682 --- [http-nio-8080-exec-2] com.mthree.services.TransactionService   : All the available transactions are sent to the userinterface
+2020-06-19 18:32:01.271  INFO 32682 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-19 18:32:01.346  INFO 32682 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-19 18:32:01.346  INFO 32682 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-19 18:32:01.355  INFO 32682 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
